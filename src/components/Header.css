@@ -1,0 +1,101 @@
+html {
+	--header-height: 50px;
+}
+
+.header-content {
+	overflow: hidden;
+  position: relative;
+}
+
+.header-top-row {
+	flex-direction: row;
+	background-color: var(--color-primary);
+	font-size: var(--font-size-large);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	display: block;
+	height: var(--header-height);
+}
+
+.header-row {
+	flex-direction: row;
+	background-color: var(--color-primary-dark);
+	font-size: var(--font-size-large);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	display: block;
+	height: var(--header-height);
+}
+
+.header-hamburger {
+	color: var(--color-text-white);
+	cursor: pointer;
+	font-size: 32px;
+	height: var(--header-height);
+	line-height: var(--header-height);
+	width: var(--header-height);
+	text-align: center;
+}
+
+.header-hamburger:hover {
+	background-color: var(--color-text-white);
+	color: var(--color-primary);
+}
+
+.header-float-left {
+	float: left;
+}
+
+.header-float-right {
+	float: right;
+}
+
+.header-button-link {
+	color: var(--color-text-white);
+	cursor: pointer;
+	display: block;
+	font-size: var(--font-size-medium);
+	padding: 0 8px;
+	height: var(--header-height);
+	line-height: var(--header-height);
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	transition: 0.1s;
+}
+
+.header-button-link:hover {
+	background-color: var(--color-text-white);
+	color: var(--color-primary);
+}
+
+.header-spinning-image {
+	float: right;
+	height: calc(var(--header-height) - 10px);
+	width: calc(var(--header-height) - 10px);
+	padding: 5px;
+	margin-left: 10px;
+	/* margin: 0 0 0 5px; */
+	border-radius: var(--header-height);
+	display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.header-spinning-image {
+		animation: spin infinite 5s linear;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(30deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
