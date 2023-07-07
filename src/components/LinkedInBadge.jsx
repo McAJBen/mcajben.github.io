@@ -36,6 +36,7 @@ export default function LinkedInBadge() {
         data-vanity="mcajben"
         data-version="v1"
       >
+       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
        <a
           class="badge-base__link LI-simple-link"
           href="https://au.linkedin.com/in/mcajben?trk=profile-badge"
