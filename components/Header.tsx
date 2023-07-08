@@ -50,10 +50,11 @@ export default function Header(props: Props) {
           ))}
         </div>
         <div className="sm:hidden inline-block">
-          <div className="text-white inline-block cursor-pointer text-3xl h-12 leading-[3rem] w-12 text-center hover:bg-white hover:text-[--color-primary]">
-            <span onClick={toggleExpanded} className="material-icons-round">
-              menu
-            </span>
+          <div
+            onClick={toggleExpanded}
+            className="text-white inline-block cursor-pointer text-3xl h-12 leading-[3rem] w-12 text-center hover:bg-white hover:text-[--color-primary]"
+          >
+            <span className="material-icons-round">menu</span>
           </div>
         </div>
         <span className="float-right">
