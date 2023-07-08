@@ -60,7 +60,7 @@ export default function HangmanStart() {
   return (
     <main>
       <Header pathname="/hangman" />
-      <div className="flex flex-col items-center justify-center text-white p-5">
+      <div className="flex flex-col items-center text-white p-5 max-w-3xl m-auto">
         <input
           className="rounded p-2 m-2 text-[--color-primary-dark]"
           type="text"
@@ -69,6 +69,11 @@ export default function HangmanStart() {
           placeholder="Your name"
           onKeyDown={onUserNameKeyDown}
         />
+        <p className="text-center max-w-md">
+          You will have a time limit to find the word, losing more time with
+          every wrong guess, but gaining time with every correct guess. Good
+          Luck.
+        </p>
         <button
           onClick={loading ? undefined : onClick}
           className="rounded p-2 m-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary]"
@@ -77,7 +82,7 @@ export default function HangmanStart() {
         </button>
         {error}
         {leaderboard && (
-          <table className="table items-center justify-center p-3">
+          <table className="w-full table-auto">
             <thead>
               <tr>
                 <th>Place</th>
@@ -92,13 +97,23 @@ export default function HangmanStart() {
                 params.set("id", boardItem.game_id);
                 const href = `/hangman/game?${params.toString()}`;
                 return (
-                  <tr key={boardItem.game_id}>
-                    <td>{index + 1}.</td>
-                    <td>{boardItem.user_name}</td>
-                    <td>
-                      <Link href={href}>{boardItem.answer}</Link>
+                  <tr
+                    key={boardItem.game_id}
+                    className="odd:bg-[--color-background-light]"
+                  >
+                    <td className="text-center">{index + 1}.</td>
+                    <td className="text-center">{boardItem.user_name}</td>
+                    <td className="text-center">
+                      <Link
+                        href={href}
+                        className="text-[--color-primary-light]"
+                      >
+                        {boardItem.answer}
+                      </Link>
                     </td>
-                    <td>{Math.round(boardItem.total_time / 100) / 10}s</td>
+                    <td className="text-center">
+                      {Math.round(boardItem.total_time / 100) / 10}s
+                    </td>
                   </tr>
                 );
               })}

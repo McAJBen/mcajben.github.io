@@ -55,6 +55,7 @@ export default function Home() {
               >
                 McAJBen@gmail.com
               </Link>
+              .
             </p>
           </div>
         </div>
