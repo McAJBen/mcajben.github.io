@@ -29,7 +29,9 @@ export default function HangmanStart() {
       setLoading(false);
       return;
     }
-    router.push(`/hangman/${response.game_id}`);
+    const params = new URLSearchParams();
+    params.set("id", response.game_id);
+    router.push(`/hangman/game?${params.toString()}`);
   }, [router, userName]);
 
   const onUserNameKeyDown = useCallback(

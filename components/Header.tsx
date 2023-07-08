@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 
 type Props = {
-  pathname: "/" | "/hangman" | `/hangman/${string}` | "/resume";
+  pathname: "/" | "/hangman" | `/hangman/game` | "/resume";
 };
 
 export default function Header(props: Props) {

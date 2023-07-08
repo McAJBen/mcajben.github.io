@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import HangmanApi, { GameState } from "@/api/HangmanApi";
 import Header from "@/components/Header";
 import Loading from "@/components/Loading";
@@ -12,8 +12,9 @@ import Timer from "@/components/hangman/Timer";
 import { useIsExpired } from "@/components/Hooks";
 import styles from "./styles.module.css";
 
-export default function Hangman(props: { params: { gameId: string } }) {
-  const { gameId } = props.params;
+export default function HangmanGame() {
+  const searchParams = useSearchParams();
+  const gameId = searchParams.get("id");
   const router = useRouter();
   const [gameState, setGameState] = useState<GameState>();
 
@@ -58,7 +59,7 @@ export default function Hangman(props: { params: { gameId: string } }) {
   if (!gameState || !gameId) {
     return (
       <>
-        <Header pathname={`/hangman/${gameId}`} />
+        <Header pathname="/hangman/game" />
         <Loading />
       </>
     );
@@ -68,7 +69,7 @@ export default function Hangman(props: { params: { gameId: string } }) {
 
   return (
     <>
-      <Header pathname={`/hangman/${gameId}`} />
+      <Header pathname="/hangman/game" />
       <div className={styles.hangman_content}>
         <Answer answer={gameState.answer} />
         {!isGameWon && isExpired && <div>You lost...</div>}

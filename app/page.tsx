@@ -1,27 +1,22 @@
 import Link from "next/link";
 import Header from "@/components/Header";
-import styles from "./styles.module.css";
 
 export default function Home() {
   return (
     <main>
       <Header pathname="/" />
-      <div className={styles.home_content}>
-        <div className={styles.home_text}>
+      <div className="p-5 flex flex-row text-base text-[var(--color-text-white)]">
+        <div className="flex flex-auto flex-col items-center">
           <p>Hi. Welcome to my website!</p>
           <p>
             I&apos;m a software developer working with React among other things.
           </p>
-          <p>
-            Try out my{" "}
-            <Link
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-              href="/hangman"
-            >
-              Hangman
-            </Link>{" "}
-            game!
-          </p>
+          <Link
+            className="rounded p-2 m-2 bg-[var(--color-primary)] hover:bg-[var(--color-text-white)] text-[var(--color-text-white)] hover:text-[var(--color-primary)]"
+            href="/hangman"
+          >
+            Try out my Hangman game!
+          </Link>
         </div>
       </div>
     </main>
