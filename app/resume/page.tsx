@@ -1,13 +1,12 @@
 import Header from "@/components/Header";
-import styles from "./styles.module.css";
 
 export default function Resume() {
   return (
     <main>
       <Header pathname="/resume" />
-      <div className={styles.resume_content}>
+      <div className="p-0">
         <iframe
-          className={styles.resume_resume}
+          className="w-full h-[calc(100vh-50px)]"
           src="/BenMcAllisterResume.pdf"
           title="Resume"
         />

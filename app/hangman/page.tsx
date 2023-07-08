@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import HangmanApi, { Leaderboard } from "@/api/HangmanApi";
 import Header from "@/components/Header";
-import styles from "./styles.module.css";
 
 export default function HangmanStart() {
   const router = useRouter();
@@ -60,24 +60,24 @@ export default function HangmanStart() {
   return (
     <>
       <Header pathname="/hangman" />
-      <div className={styles.hangman_start_content}>
+      <div className="flex flex-col items-center justify-center text-white p-5">
         <input
-          className={styles.hangman_start_user_input}
+          className="rounded p-2 m-2 text-[--color-primary-dark]"
           type="text"
           onChange={onUserNameChange}
           value={userName}
           placeholder="Your name"
           onKeyDown={onUserNameKeyDown}
         />
-        <div
+        <button
           onClick={loading ? undefined : onClick}
-          className={styles.hangman_start_button}
+          className="rounded p-2 m-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary]"
         >
           Start Game
-        </div>
+        </button>
         {error}
         {leaderboard && (
-          <table className={styles.hangman_start_leaderboard}>
+          <table className="table items-center justify-center p-3">
             <thead>
               <tr>
                 <th>Place</th>
@@ -87,14 +87,21 @@ export default function HangmanStart() {
               </tr>
             </thead>
             <tbody>
-              {leaderboard.map((boardItem, index) => (
-                <tr key={index}>
-                  <td>{index + 1}.</td>
-                  <td>{boardItem.user_name}</td>
-                  <td>{boardItem.answer}</td>
-                  <td>{Math.round(boardItem.total_time / 100) / 10}s</td>
-                </tr>
-              ))}
+              {leaderboard.map((boardItem, index) => {
+                const params = new URLSearchParams();
+                params.set("id", boardItem.game_id);
+                const href = `/hangman/game?${params.toString()}`;
+                return (
+                  <tr key={boardItem.game_id}>
+                    <td>{index + 1}.</td>
+                    <td>{boardItem.user_name}</td>
+                    <td>
+                      <Link href={href}>{boardItem.answer}</Link>
+                    </td>
+                    <td>{Math.round(boardItem.total_time / 100) / 10}s</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}

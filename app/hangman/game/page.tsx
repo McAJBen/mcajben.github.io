@@ -10,7 +10,6 @@ import Answer from "@/components/hangman/Answer";
 import History from "@/components/hangman/History";
 import Timer from "@/components/hangman/Timer";
 import { useIsExpired } from "@/components/Hooks";
-import styles from "./styles.module.css";
 
 export default function HangmanGame() {
   const searchParams = useSearchParams();
@@ -70,7 +69,7 @@ export default function HangmanGame() {
   return (
     <>
       <Header pathname="/hangman/game" />
-      <div className={styles.hangman_content}>
+      <div className="flex flex-1 flex-col items-center text-white p-3">
         <Answer answer={gameState.answer} />
         {!isGameWon && isExpired && <div>You lost...</div>}
         {!isGameWon && !isExpired && gameState.expiration_time && (
