@@ -1,0 +1,14 @@
+.home_content {
+  display: flex;
+  flex-direction: row;
+  font-size: var(--font-size-medium);
+  color: var(--color-text-white);
+  padding: 20px;
+}
+
+.home_text {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  align-items: center;
+}

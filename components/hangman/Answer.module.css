@@ -1,0 +1,31 @@
+.hangman_answer {
+	display: flex;
+	width: 100%;
+	max-width: 500px;
+	gap: 5px;
+	margin: 10px;
+	text-transform: uppercase;
+	font-size: var(--font-size-large);
+	white-space: pre;
+	font-weight: bold;
+	user-select: none;
+}
+
+.hangman_answer_square {
+	display: inline-flex;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+	aspect-ratio: 1;
+	align-items: center;
+	background-color: var(--color-primary-light);
+	border-radius: 5px;
+}
+
+.hangman_answer_correct {
+	background-color: var(--color-text-success);
+}
+
+.hangman_answer_letter {
+	text-align: center;
+}

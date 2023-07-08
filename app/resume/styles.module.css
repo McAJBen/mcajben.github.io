@@ -1,0 +1,10 @@
+.resume_content {
+	font-size: var(--font-size-small);
+	color: var(--color-text-white);
+	padding: 20px;
+}
+
+.resume_resume {
+	width: 100%;
+	height: calc(100vh - 100px);
+}

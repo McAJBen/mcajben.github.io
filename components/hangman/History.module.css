@@ -1,0 +1,57 @@
+.hangman_history {
+	width: 100%;
+	max-width: 250px;
+	display: grid;
+	text-transform: uppercase;
+	grid-gap: 5px;
+	grid-template-columns: repeat(5, 1fr);
+	margin: 10px;
+	font-size: var(--font-size-medium);
+}
+
+.hangman_history_square {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	aspect-ratio: 1;
+	align-items: center;
+	background-color: var(--color-primary-light);
+	border-radius: 5px;
+	user-select: none;
+}
+
+.hangman_history_correct {
+	background-color: var(--color-text-success);
+}
+
+.hangman_history_description {
+	text-align: center;
+	margin: 10px;
+	max-width: 500px;
+}
+
+.hangman_history_options {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	max-width: 500px;
+	margin: 10px;
+}
+
+.hangman_history_option {
+	background-color: var(--color-primary);
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 5px;
+	width: 150px;
+	user-select: none;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+.hangman_history_option:hover {
+	background-color: var(--color-text-white);
+	color: var(--color-primary);
+}
