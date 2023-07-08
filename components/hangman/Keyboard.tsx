@@ -1,9 +1,8 @@
 "use client";
 
-import classNames from "classnames";
 import { useEffect } from "react";
+import classNames from "classnames";
 import { LETTERS, Letter } from "@/api/HangmanApi";
-import styles from "./Keyboard.module.css";
 
 export type Key = Letter;
 
@@ -36,9 +35,12 @@ export default function Keyboard(props: Props) {
     return (
       <div
         className={classNames(
-          styles.keyboard_button,
-          !isEnabled && isCorrect && styles.keyboard_button_disabled_correct,
-          !isEnabled && !isCorrect && styles.keyboard_button_disabled_incorrect
+          "flex flex-1 justify-center items-center m-0.5 rounded text-white text-xl text-center uppercase select-none",
+          isEnabled
+            ? "bg-[--color-primary] hover:bg-white hover:text-[--color-primary] cursor-pointer"
+            : isCorrect
+            ? "bg-[--color-text-success] cursor-not-allowed"
+            : "bg-transparent text-[--color-primary] cursor-not-allowed"
         )}
         onClick={isEnabled ? () => onClick(key) : undefined}
       >
@@ -48,8 +50,8 @@ export default function Keyboard(props: Props) {
   }
 
   return (
-    <div className={styles.keyboard_grid}>
-      <div className={styles.keyboard_row}>
+    <div className="w-full block max-w-lg">
+      <div className="flex w-full">
         <Key type="q" />
         <Key type="w" />
         <Key type="e" />
@@ -61,8 +63,8 @@ export default function Keyboard(props: Props) {
         <Key type="o" />
         <Key type="p" />
       </div>
-      <div className={styles.keyboard_row}>
-        <div className={styles.keyboard_spacer} />
+      <div className="flex w-full">
+        <div className="flex-[0.5]" />
         <Key type="a" />
         <Key type="s" />
         <Key type="d" />
@@ -72,12 +74,10 @@ export default function Keyboard(props: Props) {
         <Key type="j" />
         <Key type="k" />
         <Key type="l" />
-        <div className={styles.keyboard_spacer} />
+        <div className="flex-[0.5]" />
       </div>
-      <div className={styles.keyboard_row}>
-        <div className={styles.keyboard_spacer} />
-        <div className={styles.keyboard_spacer} />
-        <div className={styles.keyboard_spacer} />
+      <div className="flex w-full">
+        <div className="flex-[1.5]" />
         <Key type="z" />
         <Key type="x" />
         <Key type="c" />
@@ -85,9 +85,7 @@ export default function Keyboard(props: Props) {
         <Key type="b" />
         <Key type="n" />
         <Key type="m" />
-        <div className={styles.keyboard_spacer} />
-        <div className={styles.keyboard_spacer} />
-        <div className={styles.keyboard_spacer} />
+        <div className="flex-[1.5]" />
       </div>
     </div>
   );

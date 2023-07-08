@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { GameState } from "@/api/HangmanApi";
-import styles from "./History.module.css";
 
 type Props = {
   gameState: GameState;
@@ -31,29 +30,35 @@ export default function History(props: Props) {
 
   return (
     <>
-      <div className={styles.hangman_history_description}>
-        {gameState.description}
-      </div>
-      <div className={styles.hangman_history}>
+      <div className="text-center m-3 max-w-lg">{gameState.description}</div>
+      <div className="w-full max-w-[250px] grid uppercase gap-1 grid-cols-5 m-3">
         {gameState.guesses.map(({ letter, is_correct }, index) => (
           <div
             key={index}
             className={classNames(
-              styles.hangman_history_square,
-              is_correct && styles.hangman_history_correct
+              "flex justify-center content-center aspect-square items-center rounded select-none",
+              is_correct
+                ? "bg-[--color-text-success]"
+                : "bg-[--color-primary-light]"
             )}
           >
             {letter}
           </div>
         ))}
       </div>
-      <div className={styles.hangman_history_options}>
-        <div onClick={onShare} className={styles.hangman_history_option}>
+      <div className="flex flex-row justify-evenly w-full max-w-lg m-3">
+        <button
+          onClick={onShare}
+          className="rounded p-2 mx-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary] w-40"
+        >
           {isLinkCopied ? "Link Copied!" : "Share"}
-        </div>
-        <div onClick={onRestart} className={styles.hangman_history_option}>
+        </button>
+        <button
+          onClick={onRestart}
+          className="rounded p-2 mx-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary] w-40"
+        >
           Play again
-        </div>
+        </button>
       </div>
     </>
   );

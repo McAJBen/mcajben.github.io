@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./Loading.module.css";
 import Image from "next/image";
 
 export default function Loading() {
@@ -13,11 +12,12 @@ export default function Loading() {
   }, []);
 
   return (
-    <div className={styles.loading_content}>
+    <div className="flex flex-col items-center justify-center text-xl text-white">
+      Loading...
       {spin && (
         <Image
           src="/ben.jpg"
-          className={styles.loading_spinning_image}
+          className="rounded-full animate-spin w-20 h-20"
           width={40}
           height={40}
           alt="ben"

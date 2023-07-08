@@ -3,7 +3,6 @@
 import { useCallback, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Header.module.css";
 
 type Props = {
   pathname: "/" | "/hangman" | `/hangman/game` | "/resume";
@@ -36,30 +35,36 @@ export default function Header(props: Props) {
   ];
 
   return (
-    <div className={styles.header_content}>
-      <div className={styles.header_top_row}>
+    <div className="overflow-hidden relative">
+      <div className="flex-row bg-[--color-primary] text-lg m-0 p-0 overflow-hidden block h-12">
         <div className="hidden sm:block">
           {links.map((link) => (
-            <span key={link.name} className={styles.header_float_left}>
-              <Link className={styles.header_button_link} href={link.to}>
+            <span key={link.name} className="float-left">
+              <Link
+                className="text-white cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none hover:bg-white hover:text-[--color-primary]"
+                href={link.to}
+              >
                 {link.name}
               </Link>
             </span>
           ))}
         </div>
         <div className="sm:hidden inline-block">
-          <div className={styles.header_hamburger}>
+          <div className="text-white inline-block cursor-pointer text-3xl h-12 leading-[3rem] w-12 text-center hover:bg-white hover:text-[--color-primary]">
             <span onClick={toggleExpanded} className="material-icons-round">
               menu
             </span>
           </div>
         </div>
-        <span className={styles.header_float_right}>
-          <Link className={styles.header_button_link} href="/resume">
+        <span className="float-right">
+          <Link
+            className="text-white cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none hover:bg-white hover:text-[--color-primary]"
+            href="/resume"
+          >
             Ben McAllister
             <Image
               src="/ben.jpg"
-              className={styles.header_spinning_image}
+              className="float-right h-12 w-12 p-2 rounded-full ml-2 block animate-bob-spin"
               width={40}
               height={40}
               alt="ben"
@@ -69,8 +74,14 @@ export default function Header(props: Props) {
       </div>
       {isExpanded &&
         links.map((link) => (
-          <div key={link.name} className={styles.header_row}>
-            <Link className={styles.header_button_link} href={link.to}>
+          <div
+            key={link.name}
+            className="flex-row bg-[--color-primary-dark] text-lg m-0 p-0 overflow-hidden block h-12"
+          >
+            <Link
+              className="text-white cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none hover:bg-white hover:text-[--color-primary]"
+              href={link.to}
+            >
               {link.name}
             </Link>
           </div>

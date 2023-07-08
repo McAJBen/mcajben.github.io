@@ -4,13 +4,11 @@ export default function Resume() {
   return (
     <main>
       <Header pathname="/resume" />
-      <div className="p-0">
-        <iframe
-          className="w-full h-[calc(100vh-50px)]"
-          src="/BenMcAllisterResume.pdf"
-          title="Resume"
-        />
-      </div>
+      <iframe
+        className="w-full h-[calc(100vh-3rem)]"
+        src="/BenMcAllisterResume.pdf"
+        title="Resume"
+      />
     </main>
   );
 }

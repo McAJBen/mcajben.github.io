@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import styles from "./Answer.module.css";
 
 type Props = {
   answer: string;
@@ -9,20 +8,21 @@ export default function Answer(props: Props) {
   const { answer } = props;
 
   return (
-    <div className={styles.hangman_answer}>
+    <div className="flex w-full max-w-lg gap-1.5 margin-2.5 uppercase text-xl whitespace-pre font-bold select-none">
       {answer.split("").map((letter, index) => {
         const isCorrect = letter !== "_";
         return (
           <div
             key={index}
             className={classNames(
-              styles.hangman_answer_square,
-              isCorrect && styles.hangman_answer_correct
+              "rounded inline-flex justify-center content-center w-full aspect-square items-center",
+
+              isCorrect
+                ? "bg-[--color-text-success]"
+                : "bg-[--color-primary-light]"
             )}
           >
-            <div className={styles.hangman_answer_letter}>
-              {isCorrect ? letter : " "}
-            </div>
+            <div className="text-center">{isCorrect ? letter : " "}</div>
           </div>
         );
       })}
