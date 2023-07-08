@@ -57,18 +57,18 @@ export default function HangmanGame() {
 
   if (!gameState || !gameId) {
     return (
-      <>
-        <Header pathname="/hangman/game" />
+      <main>
+        <Header pathname="/hangman" />
         <Loading />
-      </>
+      </main>
     );
   }
 
   const isGameWon = gameState.answer.indexOf("_") === -1;
 
   return (
-    <>
-      <Header pathname="/hangman/game" />
+    <main>
+      <Header pathname="/hangman" />
       <div className="flex flex-1 flex-col items-center text-white p-3">
         <Answer answer={gameState.answer} />
         {!isGameWon && isExpired && <div>You lost...</div>}
@@ -81,6 +81,6 @@ export default function HangmanGame() {
           <Keyboard onClick={onLetterClick} getKeyInfo={getKeyInfo} />
         )}
       </div>
-    </>
+    </main>
   );
 }

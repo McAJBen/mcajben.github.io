@@ -58,7 +58,7 @@ export default function HangmanStart() {
   }, []);
 
   return (
-    <>
+    <main>
       <Header pathname="/hangman" />
       <div className="flex flex-col items-center justify-center text-white p-5">
         <input
@@ -106,6 +106,6 @@ export default function HangmanStart() {
           </table>
         )}
       </div>
-    </>
+    </main>
   );
 }

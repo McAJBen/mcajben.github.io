@@ -49,7 +49,7 @@ export default function History(props: Props) {
       <div className="flex flex-row justify-evenly w-full max-w-lg m-3">
         <button
           onClick={onShare}
-          className="rounded p-2 mx-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary] w-40"
+          className="rounded p-2 mx-2 bg-[--color-secondary] hover:bg-white text-white hover:text-[--color-secondary] w-40"
         >
           {isLinkCopied ? "Link Copied!" : "Share"}
         </button>
