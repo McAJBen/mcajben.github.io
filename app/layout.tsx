@@ -7,6 +7,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "McAJBen",
   description: "Ben McAllister's personal website",
+  authors: [{ name: "Ben McAllister" }],
+  openGraph: {
+    description: "Ben McAllister's personal website",
+    images: "/ben.jpg",
+    type: "website",
+    siteName: "McAJBen",
+    title: "McAJBen",
+    url: "www.McAJBen.com",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +28,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#800050" />
-        <meta name="image" content="/ben.jpg" />
         <link
           href="https://fonts.googleapis.com/css?family=Material+Icons+Round"
           rel="stylesheet"
