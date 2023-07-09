@@ -22,6 +22,10 @@ module.exports = {
           "100%": { transform: "rotate(0deg)" },
         },
       },
+      textColor: {
+        secondary: "var(--color-secondary)",
+        primary: "var(--color-primary-light)",
+      },
     },
   },
   plugins: [],

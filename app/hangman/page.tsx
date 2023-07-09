@@ -82,43 +82,46 @@ export default function HangmanStart() {
         </button>
         {error}
         {leaderboard && (
-          <table className="w-full table-auto">
-            <thead>
-              <tr>
-                <th>Place</th>
-                <th>User Name</th>
-                <th>Answer</th>
-                <th>Total Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard.map((boardItem, index) => {
-                const params = new URLSearchParams();
-                params.set("id", boardItem.game_id);
-                const href = `/hangman/game?${params.toString()}`;
-                return (
-                  <tr
-                    key={boardItem.game_id}
-                    className="odd:bg-[--color-background-light]"
-                  >
-                    <td className="text-center">{index + 1}.</td>
-                    <td className="text-center">{boardItem.user_name}</td>
-                    <td className="text-center">
-                      <Link
-                        href={href}
-                        className="text-[--color-primary-light]"
-                      >
-                        {boardItem.answer}
-                      </Link>
-                    </td>
-                    <td className="text-center">
-                      {Math.round(boardItem.total_time / 100) / 10}s
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <>
+            <div className="text-xl">Leaderboard</div>
+            <table className="w-full table-auto">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Answer</th>
+                  <th>Total Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leaderboard.map((boardItem, index) => {
+                  const params = new URLSearchParams();
+                  params.set("id", boardItem.game_id);
+                  const href = `/hangman/game?${params.toString()}`;
+                  return (
+                    <tr
+                      key={boardItem.game_id}
+                      className="odd:bg-[--color-background-light]"
+                    >
+                      <td className="text-center">{index + 1}.</td>
+                      <td className="text-center">{boardItem.user_name}</td>
+                      <td className="text-center">
+                        <Link
+                          href={href}
+                          className="text-[--color-primary-light]"
+                        >
+                          {boardItem.answer}
+                        </Link>
+                      </td>
+                      <td className="text-center">
+                        {Math.round(boardItem.total_time / 100) / 10}s
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </>
         )}
       </div>
     </main>
