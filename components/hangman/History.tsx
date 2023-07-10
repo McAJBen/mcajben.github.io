@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import classNames from "classnames";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { GameState } from "@/api/HangmanApi";
 
 type Props = {
@@ -12,7 +12,6 @@ type Props = {
 export default function History(props: Props) {
   const { gameState } = props;
 
-  const router = useRouter();
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
   const onShare = useCallback(async () => {
@@ -23,10 +22,6 @@ export default function History(props: Props) {
     );
     setIsLinkCopied(true);
   }, [gameState]);
-
-  const onRestart = useCallback(() => {
-    router.push("/hangman");
-  }, [router]);
 
   return (
     <>
@@ -53,12 +48,12 @@ export default function History(props: Props) {
         >
           {isLinkCopied ? "Link Copied!" : "Share"}
         </button>
-        <button
-          onClick={onRestart}
-          className="rounded p-2 mx-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary] w-40"
+        <Link
+          href="/hangman"
+          className="mx-2 w-40 rounded bg-[--color-primary] p-2 text-center text-white hover:bg-white hover:text-[--color-primary]"
         >
-          Play again
-        </button>
+          Play Again
+        </Link>
       </div>
     </>
   );
