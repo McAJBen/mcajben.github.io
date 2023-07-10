@@ -25,7 +25,7 @@ export default function Home() {
             </p>
             <p className="mt-5">
               In fact, just this single website alone uses{" "}
-              <span className="text-primary">Next.js</span> which uses{" "}
+              <span className="text-primary">Next.js</span>,{" "}
               <span className="text-primary">React</span>,{" "}
               <span className="text-primary">Typescript</span>, and{" "}
               <span className="text-primary">Tailwind</span>. This is all hosted
@@ -33,8 +33,9 @@ export default function Home() {
               <span className="text-primary">Github Pages</span>.
             </p>
             <p className="mt-5">
-              The Hangman game that I linked to above is a static site, but uses
-              a backend build from <span className="text-primary">Rust</span>,{" "}
+              The Hangman game that I linked to above is part of this static
+              site, but uses a backend built with{" "}
+              <span className="text-primary">Rust</span>,{" "}
               <span className="text-primary">Actix-web</span>, and{" "}
               <span className="text-primary">SQLite</span>. All of this is
               hosted on a personal <span className="text-primary">Proxmox</span>{" "}
