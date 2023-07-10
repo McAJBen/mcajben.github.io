@@ -31,12 +31,12 @@ export default function History(props: Props) {
   return (
     <>
       <div className="text-center m-3 max-w-lg">{gameState.description}</div>
-      <div className="w-full max-w-[250px] grid uppercase gap-1 grid-cols-5 m-3">
+      <div className="w-full flex flex-wrap container justify-center max-w-md uppercase gap-1 m-3">
         {gameState.guesses.map(({ letter, is_correct }, index) => (
           <div
             key={index}
             className={classNames(
-              "flex justify-center content-center aspect-square items-center rounded select-none",
+              "flex justify-center content-center aspect-square items-center rounded select-none w-[3rem]",
               is_correct
                 ? "bg-[--color-text-success]"
                 : "bg-[--color-primary-light]"
