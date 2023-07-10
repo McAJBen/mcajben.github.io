@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { MdMenu } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
@@ -60,7 +61,7 @@ export default function Header(props: Props) {
             onClick={toggleExpanded}
             className="text-white inline-block cursor-pointer text-3xl h-12 leading-[3rem] w-12 text-center hover:bg-white hover:text-[--color-primary] float-left"
           >
-            <span className="material-icons-round">menu</span>
+            <MdMenu className="m-auto h-12" />
           </div>
         </div>
         <div className="sm:hidden cursor-pointer inline-block px-2 h-12 leading-[3rem] text-center select-none text-lg bg-white text-[--color-primary]">
