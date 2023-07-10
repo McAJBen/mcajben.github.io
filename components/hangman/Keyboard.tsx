@@ -35,12 +35,12 @@ export default function Keyboard(props: Props) {
     return (
       <div
         className={classNames(
-          "flex flex-1 justify-center items-center m-0.5 rounded text-white text-xl text-center uppercase select-none",
+          "m-0.5 flex flex-1 select-none items-center justify-center rounded text-center text-xl uppercase text-white",
           isEnabled
-            ? "bg-[--color-primary] hover:bg-white hover:text-[--color-primary] cursor-pointer"
+            ? "cursor-pointer bg-[--color-primary] hover:bg-white hover:text-[--color-primary]"
             : isCorrect
-            ? "bg-[--color-text-success] cursor-not-allowed"
-            : "bg-transparent text-[--color-primary] cursor-not-allowed"
+            ? "cursor-not-allowed bg-[--color-text-success]"
+            : "cursor-not-allowed bg-transparent text-[--color-primary]"
         )}
         onClick={isEnabled ? () => onClick(key) : undefined}
       >
@@ -50,7 +50,7 @@ export default function Keyboard(props: Props) {
   }
 
   return (
-    <div className="w-full block max-w-lg">
+    <div className="block w-full max-w-lg">
       <div className="flex w-full">
         <Key type="q" />
         <Key type="w" />

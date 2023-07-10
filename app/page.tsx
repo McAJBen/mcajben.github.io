@@ -6,19 +6,19 @@ export default function Home() {
   return (
     <main>
       <Header pathname="/" />
-      <div className="p-5 flex flex-auto flex-col text-base text-white items-center">
+      <div className="flex flex-auto flex-col items-center p-5 text-base text-white">
         <div className="flex flex-col items-center">
           <p className="text-xl">Hi, and welcome to my website!</p>
           <Link
-            className="rounded p-2 m-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary]"
+            className="m-2 rounded bg-[--color-primary] p-2 text-white hover:bg-white hover:text-[--color-primary]"
             href="/hangman"
           >
             Try out my Hangman game!
           </Link>
         </div>
         <div className="container flex flex-wrap justify-center gap-3">
-          <div className="rounded-md p-5 max-w-md bg-[--color-background-light] border border-[--color-primary]">
-            <p className="text-lg text-center block m-3">About Me</p>
+          <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light] p-5">
+            <p className="m-3 block text-center text-lg">About Me</p>
             <p className="mt-5">
               I&apos;m a full time software developer from Michigan, who likes
               to have fun trying out different tools and languages.
@@ -58,14 +58,14 @@ export default function Home() {
               .
             </p>
           </div>
-          <div className="rounded-md max-w-md bg-[--color-background-light] border border-[--color-primary]">
+          <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
             <Link
               href="https://github.com/McAJBen/DungeonBoard"
               className="flex flex-row"
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tl-md hover:scale-150 hover:z-10 transition"
+                  className="rounded-tl-md transition hover:z-10 hover:scale-150"
                   alt="Example image of Dungeon Board controls"
                   src="/dungeonboard_control2.webp"
                   fill
@@ -76,7 +76,7 @@ export default function Home() {
               </div>
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tr-md hover:scale-150 hover:z-10 transition"
+                  className="rounded-tr-md transition hover:z-10 hover:scale-150"
                   alt="Example image of Dungeon Board player view"
                   src="/dungeonboard_view2.webp"
                   fill
@@ -89,7 +89,7 @@ export default function Home() {
             <div className="p-5 pt-1">
               <Link
                 href="https://github.com/McAJBen/DungeonBoard"
-                className="text-lg text-center text-secondary block m-3"
+                className="m-3 block text-center text-lg text-secondary"
               >
                 Dungeon Board
               </Link>
@@ -107,11 +107,11 @@ export default function Home() {
               <p className="content-center"></p>
             </div>
           </div>
-          <div className="rounded-md max-w-md bg-[--color-background-light] border border-[--color-primary]">
+          <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
             <div className="p-5 pt-1">
               <Link
                 href="https://github.com/McAJBen/advent_of_code"
-                className="text-lg text-center text-secondary block m-3"
+                className="m-3 block text-center text-lg text-secondary"
               >
                 Advent of Code
               </Link>
@@ -121,7 +121,7 @@ export default function Home() {
                 optimized code so that each year can be solved in a matter of
                 minutes.
               </p>
-              <p className="mt-5 bg-black mx-3">
+              <p className="mx-3 mt-5 bg-black">
                 <code>
                   year2022 day12 part1: 1.5188ms <br />
                   year2022 day12 part2: 1.5564ms <br />
@@ -134,14 +134,14 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="rounded-md max-w-md bg-[--color-background-light] border border-[--color-primary]">
+          <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
             <Link
               href="https://github.com/McAJBen/MinesweeperAI"
               className="flex flex-row"
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-t-md hover:scale-150 hover:z-10 transition"
+                  className="rounded-t-md transition hover:z-10 hover:scale-150"
                   alt="Example minesweeper grid with highlighted cells"
                   src="/minesweeperai_Example1.webp"
                   fill
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="p-5 pt-1">
               <Link
                 href="https://github.com/McAJBen/MinesweeperAI"
-                className="text-lg text-center text-secondary block m-3"
+                className="m-3 block text-center text-lg text-secondary"
               >
                 Minesweeper AI
               </Link>
@@ -170,14 +170,14 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="rounded-md max-w-md bg-[--color-background-light] border border-[--color-primary]">
+          <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
             <Link
               href="https://github.com/McAJBen/TriangleConverter"
               className="flex flex-row"
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tl-md hover:scale-150 hover:z-10 transition"
+                  className="rounded-tl-md transition hover:z-10 hover:scale-150"
                   alt="Color wheel image recreated with triangles"
                   src="/triangleconverter_hue.webp"
                   fill
@@ -188,7 +188,7 @@ export default function Home() {
               </div>
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tr-md hover:scale-150 hover:z-10 transition"
+                  className="rounded-tr-md transition hover:z-10 hover:scale-150"
                   alt="Starry Night image recreated with triangles"
                   src="/triangleconverter_starrynight.webp"
                   fill
@@ -201,7 +201,7 @@ export default function Home() {
             <div className="p-5 pt-1">
               <Link
                 href="https://github.com/McAJBen/TriangleConverter"
-                className="text-lg text-center text-secondary block m-3"
+                className="m-3 block text-center text-lg text-secondary"
               >
                 Triangle Converter
               </Link>

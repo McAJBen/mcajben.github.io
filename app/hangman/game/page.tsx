@@ -69,7 +69,7 @@ export default function HangmanGame() {
   return (
     <main>
       <Header pathname="/hangman" />
-      <div className="flex flex-1 flex-col items-center text-white p-3">
+      <div className="flex flex-1 flex-col items-center p-3 text-white">
         <Answer answer={gameState.answer} />
         {!isGameWon && isExpired && <div>You lost...</div>}
         {!isGameWon && !isExpired && gameState.expiration_time && (

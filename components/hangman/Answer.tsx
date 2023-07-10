@@ -8,14 +8,14 @@ export default function Answer(props: Props) {
   const { answer } = props;
 
   return (
-    <div className="flex w-full max-w-lg gap-1.5 margin-2.5 uppercase text-xl whitespace-pre font-bold select-none">
+    <div className="margin-2.5 flex w-full max-w-lg select-none gap-1.5 whitespace-pre text-xl font-bold uppercase">
       {answer.split("").map((letter, index) => {
         const isCorrect = letter !== "_";
         return (
           <div
             key={index}
             className={classNames(
-              "rounded inline-flex justify-center content-center w-full aspect-square items-center",
+              "inline-flex aspect-square w-full content-center items-center justify-center rounded",
 
               isCorrect
                 ? "bg-[--color-text-success]"

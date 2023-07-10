@@ -37,17 +37,17 @@ export default function Header(props: Props) {
   ];
 
   return (
-    <div className="overflow-hidden relative">
-      <div className="flex-row bg-[--color-primary] text-lg m-0 p-0 overflow-hidden block h-12">
+    <div className="relative overflow-hidden">
+      <div className="m-0 block h-12 flex-row overflow-hidden bg-[--color-primary] p-0 text-lg">
         <div className="hidden sm:block">
           {links.map((link) => (
             <span key={link.name} className="float-left">
               <Link
                 className={classNames(
-                  "cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none",
+                  "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                   link.selected
                     ? "bg-white text-[--color-primary]"
-                    : "hover:bg-white text-white hover:text-[--color-primary]"
+                    : "text-white hover:bg-white hover:text-[--color-primary]"
                 )}
                 href={link.to}
               >
@@ -59,23 +59,23 @@ export default function Header(props: Props) {
         <div className="block sm:hidden">
           <div
             onClick={toggleExpanded}
-            className="text-white inline-block cursor-pointer text-3xl h-12 leading-[3rem] w-12 text-center hover:bg-white hover:text-[--color-primary] float-left"
+            className="float-left inline-block h-12 w-12 cursor-pointer text-center text-3xl leading-[3rem] text-white hover:bg-white hover:text-[--color-primary]"
           >
             <MdMenu className="m-auto h-12" />
           </div>
         </div>
-        <div className="sm:hidden cursor-pointer inline-block px-2 h-12 leading-[3rem] text-center select-none text-lg bg-white text-[--color-primary]">
+        <div className="inline-block h-12 cursor-pointer select-none bg-white px-2 text-center text-lg leading-[3rem] text-[--color-primary] sm:hidden">
           {links.find((link) => link.selected)?.name}
         </div>
         <span className="float-right">
           <Link
-            className="text-white cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none hover:bg-white hover:text-[--color-primary]"
+            className="block h-12 cursor-pointer select-none px-2 text-center leading-[3rem] text-white hover:bg-white hover:text-[--color-primary]"
             href="/resume"
           >
             Ben McAllister
             <Image
               src="/ben.webp"
-              className="float-right h-12 w-12 p-2 rounded-full ml-2 block animate-bob-spin"
+              className="float-right ml-2 block h-12 w-12 animate-bob-spin rounded-full p-2"
               width={40}
               height={40}
               alt="ben"
@@ -87,14 +87,14 @@ export default function Header(props: Props) {
         links.map((link) => (
           <div
             key={link.name}
-            className="flex-row bg-[--color-primary-dark] text-lg m-0 p-0 overflow-hidden block h-12"
+            className="m-0 block h-12 flex-row overflow-hidden bg-[--color-primary-dark] p-0 text-lg"
           >
             <Link
               className={classNames(
-                "cursor-pointer block px-2 h-12 leading-[3rem] text-center select-none",
+                "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                 link.selected
                   ? "bg-white text-[--color-primary]"
-                  : "hover:bg-white text-white hover:text-[--color-primary]"
+                  : "text-white hover:bg-white hover:text-[--color-primary]"
               )}
               href={link.to}
             >

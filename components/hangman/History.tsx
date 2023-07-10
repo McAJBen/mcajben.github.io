@@ -25,13 +25,13 @@ export default function History(props: Props) {
 
   return (
     <>
-      <div className="text-center m-3 max-w-lg">{gameState.description}</div>
-      <div className="w-full flex flex-wrap container justify-center max-w-md uppercase gap-1 m-3">
+      <div className="m-3 max-w-lg text-center">{gameState.description}</div>
+      <div className="container m-3 flex w-full max-w-md flex-wrap justify-center gap-1 uppercase">
         {gameState.guesses.map(({ letter, is_correct }, index) => (
           <div
             key={index}
             className={classNames(
-              "flex justify-center content-center aspect-square items-center rounded select-none w-[3rem]",
+              "flex aspect-square w-[3rem] select-none content-center items-center justify-center rounded",
               is_correct
                 ? "bg-[--color-text-success]"
                 : "bg-[--color-primary-light]"
@@ -41,10 +41,10 @@ export default function History(props: Props) {
           </div>
         ))}
       </div>
-      <div className="flex flex-row justify-evenly w-full max-w-lg m-3">
+      <div className="m-3 flex w-full max-w-lg flex-row justify-evenly">
         <button
           onClick={onShare}
-          className="rounded p-2 mx-2 bg-[--color-secondary] hover:bg-white text-white hover:text-[--color-secondary] w-40"
+          className="mx-2 w-40 rounded bg-[--color-secondary] p-2 text-white hover:bg-white hover:text-[--color-secondary]"
         >
           {isLinkCopied ? "Link Copied!" : "Share"}
         </button>

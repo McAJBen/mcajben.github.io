@@ -5,7 +5,7 @@ export default function Resume() {
     <main>
       <Header pathname="/resume" />
       <iframe
-        className="w-full h-[calc(100vh-3rem)]"
+        className="h-[calc(100vh-3rem)] w-full"
         src="/BenMcAllisterResume.pdf"
         title="Resume"
       />

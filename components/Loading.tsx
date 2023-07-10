@@ -17,7 +17,7 @@ export default function Loading() {
       {spin && (
         <Image
           src="/ben.webp"
-          className="rounded-full animate-spin w-20 h-20"
+          className="h-20 w-20 animate-spin rounded-full"
           width={40}
           height={40}
           alt="ben"

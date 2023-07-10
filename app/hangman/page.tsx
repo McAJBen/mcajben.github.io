@@ -60,23 +60,23 @@ export default function HangmanStart() {
   return (
     <main>
       <Header pathname="/hangman" />
-      <div className="flex flex-col items-center text-white p-5 max-w-3xl m-auto">
+      <div className="m-auto flex max-w-3xl flex-col items-center p-5 text-white">
         <input
-          className="rounded p-2 m-2 text-[--color-primary-dark]"
+          className="m-2 rounded p-2 text-[--color-primary-dark]"
           type="text"
           onChange={onUserNameChange}
           value={userName}
           placeholder="Your name"
           onKeyDown={onUserNameKeyDown}
         />
-        <p className="text-center max-w-md">
+        <p className="max-w-md text-center">
           You will have a time limit to find the word, losing more time with
           every wrong guess, but gaining time with every correct guess. Good
           Luck.
         </p>
         <button
           onClick={loading ? undefined : onClick}
-          className="rounded p-2 m-2 bg-[--color-primary] hover:bg-white text-white hover:text-[--color-primary]"
+          className="m-2 rounded bg-[--color-primary] p-2 text-white hover:bg-white hover:text-[--color-primary]"
         >
           Start Game
         </button>

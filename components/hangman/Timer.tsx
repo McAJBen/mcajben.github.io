@@ -13,7 +13,7 @@ export default function Timer(props: Props) {
   const msRemaining = useMsRemaining(expirationTime);
 
   return (
-    <div className="text-xl select-none">
+    <div className="select-none text-xl">
       {new Date(msRemaining).toISOString().substring(14, 21)}
     </div>
   );
