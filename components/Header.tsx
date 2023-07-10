@@ -74,7 +74,7 @@ export default function Header(props: Props) {
           >
             Ben McAllister
             <Image
-              src="/ben.jpg"
+              src="/ben.webp"
               className="float-right h-12 w-12 p-2 rounded-full ml-2 block animate-bob-spin"
               width={40}
               height={40}

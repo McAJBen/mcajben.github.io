@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     description: "Ben McAllister's personal website",
-    images: "/ben.jpg",
+    images: "/ben.webp",
     type: "website",
     siteName: "McAJBen",
     title: "McAJBen",

@@ -66,7 +66,7 @@ export default function Home() {
                 <Image
                   className="rounded-tl-md hover:scale-150 hover:z-10 transition"
                   alt="Example image of Dungeon Board controls"
-                  src="/dungeonboard_control2.png"
+                  src="/dungeonboard_control2.webp"
                   fill
                   style={{
                     objectFit: "cover",
@@ -77,7 +77,7 @@ export default function Home() {
                 <Image
                   className="rounded-tr-md hover:scale-150 hover:z-10 transition"
                   alt="Example image of Dungeon Board player view"
-                  src="/dungeonboard_view2.png"
+                  src="/dungeonboard_view2.webp"
                   fill
                   style={{
                     objectFit: "cover",
@@ -142,7 +142,7 @@ export default function Home() {
                 <Image
                   className="rounded-t-md hover:scale-150 hover:z-10 transition"
                   alt="Example minesweeper grid with highlighted cells"
-                  src="/minesweeperai_Example1.png"
+                  src="/minesweeperai_Example1.webp"
                   fill
                   style={{
                     objectFit: "cover",
@@ -178,7 +178,7 @@ export default function Home() {
                 <Image
                   className="rounded-tl-md hover:scale-150 hover:z-10 transition"
                   alt="Color wheel image recreated with triangles"
-                  src="/triangleconverter_hue.png"
+                  src="/triangleconverter_hue.webp"
                   fill
                   style={{
                     objectFit: "cover",
@@ -189,7 +189,7 @@ export default function Home() {
                 <Image
                   className="rounded-tr-md hover:scale-150 hover:z-10 transition"
                   alt="Starry Night image recreated with triangles"
-                  src="/triangleconverter_starrynight.png"
+                  src="/triangleconverter_starrynight.webp"
                   fill
                   style={{
                     objectFit: "cover",
