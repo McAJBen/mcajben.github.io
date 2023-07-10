@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import classNames from "classnames";
 import Link from "next/link";
+import { MdContentCopy, MdRefresh } from "react-icons/md";
 import { GameState } from "@/api/HangmanApi";
 
 type Props = {
@@ -44,15 +45,17 @@ export default function History(props: Props) {
       <div className="m-3 flex w-full max-w-lg flex-row justify-evenly">
         <button
           onClick={onShare}
-          className="mx-2 w-40 rounded bg-[--color-secondary] p-2 text-white hover:bg-white hover:text-[--color-secondary]"
+          className="mx-2 flex w-40 flex-row items-center justify-center rounded bg-[--color-secondary] p-2 text-white hover:bg-white hover:text-[--color-secondary]"
         >
           {isLinkCopied ? "Link Copied!" : "Share"}
+          {!isLinkCopied && <MdContentCopy className="ml-2" />}
         </button>
         <Link
           href="/hangman"
-          className="mx-2 w-40 rounded bg-[--color-primary] p-2 text-center text-white hover:bg-white hover:text-[--color-primary]"
+          className="mx-2 flex w-40 flex-row items-center justify-center rounded bg-[--color-primary] p-2 text-center hover:bg-white hover:text-[--color-primary]"
         >
           Play Again
+          <MdRefresh className="ml-2" />
         </Link>
       </div>
     </>
