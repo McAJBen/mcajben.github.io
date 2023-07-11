@@ -65,24 +65,18 @@ export default function Home() {
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tl-md transition hover:z-10 hover:scale-150"
+                  className="rounded-tl-md transition hover:z-10 hover:scale-150 hover:rounded-none"
                   alt="Example image of Dungeon Board controls"
                   src="/dungeonboard_control2.webp"
                   fill
-                  style={{
-                    objectFit: "cover",
-                  }}
                 />
               </div>
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tr-md transition hover:z-10 hover:scale-150"
+                  className="rounded-tr-md transition hover:z-10 hover:scale-150 hover:rounded-none"
                   alt="Example image of Dungeon Board player view"
                   src="/dungeonboard_view2.webp"
                   fill
-                  style={{
-                    objectFit: "cover",
-                  }}
                 />
               </div>
             </Link>
@@ -141,13 +135,10 @@ export default function Home() {
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-t-md transition hover:z-10 hover:scale-150"
+                  className="rounded-t-md transition hover:z-10 hover:scale-150 hover:rounded-none"
                   alt="Example minesweeper grid with highlighted cells"
                   src="/minesweeperai_Example1.webp"
                   fill
-                  style={{
-                    objectFit: "cover",
-                  }}
                 />
               </div>
             </Link>
@@ -177,24 +168,18 @@ export default function Home() {
             >
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tl-md transition hover:z-10 hover:scale-150"
+                  className="rounded-tl-md transition hover:z-10 hover:scale-150 hover:rounded-none"
                   alt="Color wheel image recreated with triangles"
                   src="/triangleconverter_hue.webp"
                   fill
-                  style={{
-                    objectFit: "cover",
-                  }}
                 />
               </div>
               <div className="relative h-40 w-full">
                 <Image
-                  className="rounded-tr-md transition hover:z-10 hover:scale-150"
+                  className="rounded-tr-md transition hover:z-10 hover:scale-150 hover:rounded-none"
                   alt="Starry Night image recreated with triangles"
                   src="/triangleconverter_starrynight.webp"
                   fill
-                  style={{
-                    objectFit: "cover",
-                  }}
                 />
               </div>
             </Link>
