@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import HangmanApi, { Leaderboard } from "@/api/HangmanApi";
-import Header from "@/components/Header";
 
 export default function HangmanStart() {
   const router = useRouter();
@@ -59,7 +58,6 @@ export default function HangmanStart() {
 
   return (
     <main>
-      <Header pathname="/hangman" />
       <div className="m-auto flex max-w-3xl flex-col items-center p-5 text-white">
         <input
           className="m-2 rounded p-2 text-[--color-primary-dark]"

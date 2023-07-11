@@ -1,11 +1,9 @@
 import Link from "next/link";
-import Header from "@/components/Header";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <Header pathname="/" />
       <div className="flex flex-auto flex-col items-center p-5 text-base text-white">
         <div className="flex flex-col items-center">
           <p className="text-xl">Hi, and welcome to my website!</p>
@@ -48,14 +46,6 @@ export default function Home() {
               using <span className="text-primary">LaTeX</span> which allows me
               to use <span className="text-primary">Git</span> to keep it in
               version control.
-            </p>
-            <p className="mt-5">
-              If you have any questions, suggestions, or just something cool you
-              want to send to me, I can be contacted at{" "}
-              <Link href="mailto:McAJBen@gmail.com" className="text-secondary">
-                McAJBen@gmail.com
-              </Link>
-              .
             </p>
           </div>
           <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">

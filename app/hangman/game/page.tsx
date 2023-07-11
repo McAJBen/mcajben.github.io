@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import HangmanApi, { GameState } from "@/api/HangmanApi";
-import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import Keyboard, { Key } from "@/components/hangman/Keyboard";
 import Answer from "@/components/hangman/Answer";
@@ -58,7 +57,6 @@ export default function HangmanGame() {
   if (!gameState || !gameId) {
     return (
       <main>
-        <Header pathname="/hangman" />
         <Loading />
       </main>
     );
@@ -68,7 +66,6 @@ export default function HangmanGame() {
 
   return (
     <main>
-      <Header pathname="/hangman" />
       <div className="flex flex-1 flex-col items-center p-3 text-white">
         <Answer answer={gameState.answer} />
         {!isGameWon && isExpired && <div>You lost...</div>}

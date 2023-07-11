@@ -4,18 +4,20 @@ import { useCallback, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import classNames from "classnames";
 
-type Props = {
-  pathname: "/" | "/hangman" | "/resume";
-};
-
-export default function Header(props: Props) {
-  const { pathname } = props;
+export default function Header() {
+  const pathname = usePathname();
+  console.log(pathname);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleExpanded = useCallback(() => {
+  const onToggleExpanded = useCallback(() => {
     setIsExpanded((prev) => !prev);
+  }, []);
+
+  const onClick = useCallback(() => {
+    setIsExpanded(false);
   }, []);
 
   const links = [
@@ -27,7 +29,7 @@ export default function Header(props: Props) {
     {
       name: "Hangman",
       to: "/hangman",
-      selected: pathname === "/hangman",
+      selected: pathname === "/hangman" || pathname === "/hangman/game",
     },
     {
       name: "Resume",
@@ -37,7 +39,7 @@ export default function Header(props: Props) {
   ];
 
   return (
-    <div className="relative overflow-hidden">
+    <header className="absolute w-full overflow-hidden">
       <div className="m-0 block h-12 flex-row overflow-hidden bg-[--color-primary] p-0 text-lg">
         <div className="hidden sm:block">
           {links.map((link) => (
@@ -58,7 +60,7 @@ export default function Header(props: Props) {
         </div>
         <div className="block sm:hidden">
           <div
-            onClick={toggleExpanded}
+            onClick={onToggleExpanded}
             className="float-left inline-block h-12 w-12 cursor-pointer text-center text-3xl leading-[3rem] text-white hover:bg-white hover:text-[--color-primary]"
           >
             <MdMenu className="m-auto h-12" />
@@ -97,11 +99,12 @@ export default function Header(props: Props) {
                   : "text-white hover:bg-white hover:text-[--color-primary]"
               )}
               href={link.to}
+              onClick={onClick}
             >
               {link.name}
             </Link>
           </div>
         ))}
-    </div>
+    </header>
   );
 }
