@@ -38,7 +38,7 @@ export default function RootLayout({
       </head>
       <body className={classNames(inter.className, "relative min-h-screen")}>
         <Header />
-        <div className="pb-8 pt-12">{children}</div>
+        <main className="pb-8 pt-12">{children}</main>
         <Footer />
       </body>
     </html>

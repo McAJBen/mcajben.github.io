@@ -9,7 +9,6 @@ import classNames from "classnames";
 
 export default function Header() {
   const pathname = usePathname();
-  console.log(pathname);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const onToggleExpanded = useCallback(() => {

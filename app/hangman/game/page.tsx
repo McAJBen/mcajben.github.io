@@ -55,29 +55,23 @@ export default function HangmanGame() {
   }, [gameId, router]);
 
   if (!gameState || !gameId) {
-    return (
-      <main>
-        <Loading />
-      </main>
-    );
+    return <Loading />;
   }
 
   const isGameWon = gameState.answer.indexOf("_") === -1;
 
   return (
-    <main>
-      <div className="flex flex-1 flex-col items-center p-3 text-white">
-        <Answer answer={gameState.answer} />
-        {!isGameWon && isExpired && <div>You lost...</div>}
-        {!isGameWon && !isExpired && gameState.expiration_time && (
-          <Timer expirationTime={gameState.expiration_time} />
-        )}
-        {isGameWon || isExpired ? (
-          <History gameState={gameState} />
-        ) : (
-          <Keyboard onClick={onLetterClick} getKeyInfo={getKeyInfo} />
-        )}
-      </div>
-    </main>
+    <div className="flex flex-1 flex-col items-center p-3 text-white">
+      <Answer answer={gameState.answer} />
+      {!isGameWon && isExpired && <div>You lost...</div>}
+      {!isGameWon && !isExpired && gameState.expiration_time && (
+        <Timer expirationTime={gameState.expiration_time} />
+      )}
+      {isGameWon || isExpired ? (
+        <History gameState={gameState} />
+      ) : (
+        <Keyboard onClick={onLetterClick} getKeyInfo={getKeyInfo} />
+      )}
+    </div>
   );
 }
