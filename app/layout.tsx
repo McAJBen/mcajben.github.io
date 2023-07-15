@@ -36,7 +36,12 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#800050" />
       </head>
-      <body className={classNames(inter.className, "relative min-h-[100dvh]")}>
+      <body
+        className={classNames(
+          inter.className,
+          "relative min-h-[100dvh] bg-[#200010]"
+        )}
+      >
         <Header />
         <main className="pb-8 pt-12">{children}</main>
         <Footer />
