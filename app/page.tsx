@@ -47,31 +47,34 @@ export default function Home() {
           </p>
         </div>
         <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
-          <Link
-            href="https://github.com/McAJBen/DungeonBoard"
-            className="flex flex-row"
-          >
-            <div className="relative h-40 w-full">
+          <div className="flex flex-row">
+            <Link
+              href="https://github.com/McAJBen/DungeonBoard/blob/dev/Examples/control0.png"
+              className="relative h-40 w-full"
+            >
               <Image
-                className="rounded-tl-md transition hover:z-10 hover:scale-150 hover:rounded-none"
+                className="rounded-tl-md transition hover:brightness-75"
                 alt="Example image of Dungeon Board controls"
                 src="/dungeonboard_control2.webp"
                 fill
               />
-            </div>
-            <div className="relative h-40 w-full">
+            </Link>
+            <Link
+              href="https://github.com/McAJBen/DungeonBoard/blob/dev/Examples/view2.png"
+              className="relative h-40 w-full"
+            >
               <Image
-                className="rounded-tr-md transition hover:z-10 hover:scale-150 hover:rounded-none"
+                className="rounded-tr-md transition hover:brightness-75"
                 alt="Example image of Dungeon Board player view"
                 src="/dungeonboard_view2.webp"
                 fill
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/DungeonBoard"
-              className="m-3 block text-center text-lg text-secondary"
+              className="m-3 block text-center text-lg text-secondary hover:text-white"
             >
               Dungeon Board
             </Link>
@@ -93,7 +96,7 @@ export default function Home() {
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/advent_of_code"
-              className="m-3 block text-center text-lg text-secondary"
+              className="m-3 block text-center text-lg text-secondary hover:text-white"
             >
               Advent of Code
             </Link>
@@ -117,23 +120,23 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
-          <Link
-            href="https://github.com/McAJBen/MinesweeperAI"
-            className="flex flex-row"
-          >
-            <div className="relative h-40 w-full">
+          <div className="flex flex-row">
+            <Link
+              href="https://github.com/McAJBen/MinesweeperAI"
+              className="relative h-40 w-full"
+            >
               <Image
-                className="rounded-t-md transition hover:z-10 hover:scale-150 hover:rounded-none"
+                className="rounded-t-md transition hover:brightness-75"
                 alt="Example minesweeper grid with highlighted cells"
                 src="/minesweeperai_Example1.webp"
                 fill
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/MinesweeperAI"
-              className="m-3 block text-center text-lg text-secondary"
+              className="m-3 block text-center text-lg text-secondary hover:text-white"
             >
               Minesweeper AI
             </Link>
@@ -150,31 +153,34 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
-          <Link
-            href="https://github.com/McAJBen/TriangleConverter"
-            className="flex flex-row"
-          >
-            <div className="relative h-40 w-full">
+          <div className="flex flex-row">
+            <Link
+              href="https://github.com/McAJBen/TriangleConverter/blob/master/Examples/hue.png"
+              className="relative h-40 w-full"
+            >
               <Image
-                className="rounded-tl-md transition hover:z-10 hover:scale-150 hover:rounded-none"
+                className="rounded-tl-md transition hover:brightness-75"
                 alt="Color wheel image recreated with triangles"
                 src="/triangleconverter_hue.webp"
                 fill
               />
-            </div>
-            <div className="relative h-40 w-full">
+            </Link>
+            <Link
+              href="https://github.com/McAJBen/TriangleConverter/blob/master/Examples/starrynight.png"
+              className="relative h-40 w-full"
+            >
               <Image
-                className="rounded-tr-md transition hover:z-10 hover:scale-150 hover:rounded-none"
+                className="rounded-tr-md transition hover:brightness-75"
                 alt="Starry Night image recreated with triangles"
                 src="/triangleconverter_starrynight.webp"
                 fill
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/TriangleConverter"
-              className="m-3 block text-center text-lg text-secondary"
+              className="m-3 block text-center text-lg text-secondary hover:text-white"
             >
               Triangle Converter
             </Link>
