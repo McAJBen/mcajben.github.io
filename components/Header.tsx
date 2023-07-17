@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <header className="absolute w-full overflow-hidden">
-      <div className="m-0 block h-12 flex-row overflow-hidden bg-[--color-primary] p-0 text-lg">
+      <div className="m-0 block h-12 flex-row overflow-hidden bg-primary p-0 text-lg">
         <div className="hidden sm:block">
           {links.map((link) => (
             <span key={link.name} className="float-left">
@@ -47,8 +47,8 @@ export default function Header() {
                 className={classNames(
                   "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                   link.selected
-                    ? "bg-white text-[--color-primary]"
-                    : "text-white hover:bg-white hover:text-[--color-primary]"
+                    ? "bg-white text-primary"
+                    : "text-white hover:bg-white hover:text-primary"
                 )}
                 href={link.to}
               >
@@ -60,17 +60,17 @@ export default function Header() {
         <div className="block sm:hidden">
           <div
             onClick={onToggleExpanded}
-            className="float-left inline-block h-12 w-12 cursor-pointer text-center text-3xl leading-[3rem] text-white hover:bg-white hover:text-[--color-primary]"
+            className="float-left inline-block h-12 w-12 cursor-pointer text-center text-3xl leading-[3rem] text-white hover:bg-white hover:text-primary"
           >
             <MdMenu className="m-auto h-12" />
           </div>
         </div>
-        <div className="inline-block h-12 cursor-pointer select-none bg-white px-2 text-center text-lg leading-[3rem] text-[--color-primary] sm:hidden">
+        <div className="inline-block h-12 cursor-pointer select-none bg-white px-2 text-center text-lg leading-[3rem] text-primary sm:hidden">
           {links.find((link) => link.selected)?.name}
         </div>
         <span className="float-right">
           <Link
-            className="block h-12 cursor-pointer select-none px-2 text-center leading-[3rem] text-white hover:bg-white hover:text-[--color-primary]"
+            className="block h-12 cursor-pointer select-none px-2 text-center leading-[3rem] text-white hover:bg-white hover:text-primary"
             href="/resume"
           >
             Ben McAllister
@@ -88,14 +88,14 @@ export default function Header() {
         links.map((link) => (
           <div
             key={link.name}
-            className="m-0 block h-12 flex-row overflow-hidden bg-[--color-primary-dark] p-0 text-lg"
+            className="m-0 block h-12 flex-row overflow-hidden bg-primary-600 p-0 text-lg"
           >
             <Link
               className={classNames(
                 "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                 link.selected
-                  ? "bg-white text-[--color-primary]"
-                  : "text-white hover:bg-white hover:text-[--color-primary]"
+                  ? "bg-white text-primary"
+                  : "text-white hover:bg-white hover:text-primary"
               )}
               href={link.to}
               onClick={onClick}

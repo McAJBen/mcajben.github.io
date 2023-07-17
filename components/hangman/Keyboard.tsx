@@ -37,10 +37,10 @@ export default function Keyboard(props: Props) {
         className={classNames(
           "m-0.5 flex flex-1 select-none items-center justify-center rounded text-center text-xl uppercase text-white",
           isEnabled
-            ? "cursor-pointer bg-[--color-primary] hover:bg-white hover:text-[--color-primary]"
+            ? "cursor-pointer bg-primary hover:bg-white hover:text-primary"
             : isCorrect
-            ? "cursor-not-allowed bg-[--color-text-success]"
-            : "cursor-not-allowed bg-transparent text-[--color-primary]"
+            ? "cursor-not-allowed bg-success"
+            : "cursor-not-allowed bg-transparent text-primary"
         )}
         onClick={isEnabled ? () => onClick(key) : undefined}
       >

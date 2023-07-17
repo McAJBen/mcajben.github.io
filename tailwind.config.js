@@ -7,10 +7,23 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        primary: {
+          100: "#A06080",
+          DEFAULT: "#800040",
+          // DEFAULT: "#4D0202", // real icon color
+          600: "#600030",
+          800: "#420c27",
+        },
+        highlight: "#A06080",
+        secondary: {
+          300: "#0179e2",
+          DEFAULT: "#0F4D82", // real icon color
+        },
+        link: "#0179e2",
+        error: "#ce6262",
+        warning: "#bfbb54",
+        success: "#63b159",
       },
       animation: {
         "bob-spin": "bob-spin infinite 5s linear",
@@ -21,10 +34,6 @@ module.exports = {
           "50%": { transform: "rotate(30deg)" },
           "100%": { transform: "rotate(0deg)" },
         },
-      },
-      textColor: {
-        secondary: "var(--color-secondary)",
-        primary: "var(--color-primary-light)",
       },
     },
   },

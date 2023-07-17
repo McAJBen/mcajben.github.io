@@ -7,14 +7,14 @@ export default function Home() {
       <div className="flex flex-col items-center">
         <p className="text-xl">Hi, and welcome to my website!</p>
         <Link
-          className="m-2 rounded bg-[--color-primary] p-2 text-white hover:bg-white hover:text-[--color-primary]"
+          className="m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
           href="/hangman"
         >
           Try out my Hangman game!
         </Link>
       </div>
       <div className="container flex flex-wrap justify-center gap-3">
-        <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light] p-5">
+        <div className="max-w-md rounded-md border border-primary bg-primary-800 p-5">
           <p className="m-3 block text-center text-lg">About Me</p>
           <p className="mt-5">
             I&apos;m a full time software developer from Michigan, who likes to
@@ -22,31 +22,32 @@ export default function Home() {
           </p>
           <p className="mt-5">
             In fact, just this single website alone uses{" "}
-            <span className="text-primary">Next.js</span>,{" "}
-            <span className="text-primary">React</span>,{" "}
-            <span className="text-primary">Typescript</span>, and{" "}
-            <span className="text-primary">Tailwind</span>. This is all hosted
+            <span className="text-highlight">Next.js</span>,{" "}
+            <span className="text-highlight">React</span>,{" "}
+            <span className="text-highlight">Typescript</span>, and{" "}
+            <span className="text-highlight">Tailwind</span>. This is all hosted
             using static site generation on{" "}
-            <span className="text-primary">Github Pages</span>.
+            <span className="text-highlight">Github Pages</span>.
           </p>
           <p className="mt-5">
             The Hangman game that I linked to above is part of this static site,
             but uses a backend built with{" "}
-            <span className="text-primary">Rust</span>,{" "}
-            <span className="text-primary">Actix-web</span>, and{" "}
-            <span className="text-primary">SQLite</span>. All of this is hosted
-            on a personal <span className="text-primary">Proxmox</span> server
-            using <span className="text-primary">Linux Containers</span> and{" "}
-            <span className="text-primary">NGINX</span>.
+            <span className="text-highlight">Rust</span>,{" "}
+            <span className="text-highlight">Actix-web</span>, and{" "}
+            <span className="text-highlight">SQLite</span>. All of this is
+            hosted on a personal <span className="text-highlight">Proxmox</span>{" "}
+            server using{" "}
+            <span className="text-highlight">Linux Containers</span> and{" "}
+            <span className="text-highlight">NGINX</span>.
           </p>
           <p className="mt-5">
             My resume (which is also available through this site) was created
-            using <span className="text-primary">LaTeX</span> which allows me to
-            use <span className="text-primary">Git</span> to keep it in version
-            control.
+            using <span className="text-highlight">LaTeX</span> which allows me
+            to use <span className="text-highlight">Git</span> to keep it in
+            version control.
           </p>
         </div>
-        <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
+        <div className="max-w-md rounded-md border border-primary bg-primary-800">
           <div className="flex flex-row">
             <Link
               href="https://github.com/McAJBen/DungeonBoard/blob/dev/Examples/control0.png"
@@ -74,7 +75,7 @@ export default function Home() {
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/DungeonBoard"
-              className="m-3 block text-center text-lg text-secondary hover:text-white"
+              className="m-3 block text-center text-lg text-link hover:underline"
             >
               Dungeon Board
             </Link>
@@ -84,25 +85,25 @@ export default function Home() {
               of war.
             </p>
             <p className="mt-5">
-              Built using <span className="text-primary">Java</span> and later
-              using <span className="text-primary">Kotlin</span>, this
+              Built using <span className="text-highlight">Java</span> and later
+              using <span className="text-highlight">Kotlin</span>, this
               application can run on any computer that has Java installed. My
               Dungeons and Dragons group used this to play on an old TV.
             </p>
             <p className="content-center"></p>
           </div>
         </div>
-        <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
+        <div className="max-w-md rounded-md border border-primary bg-primary-800">
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/advent_of_code"
-              className="m-3 block text-center text-lg text-secondary hover:text-white"
+              className="m-3 block text-center text-lg text-link hover:underline"
             >
               Advent of Code
             </Link>
             <p className="mt-5">
               Github project to solve Advent of Code in{" "}
-              <span className="text-primary">Rust</span>. My goal is to create
+              <span className="text-highlight">Rust</span>. My goal is to create
               optimized code so that each year can be solved in a matter of
               minutes.
             </p>
@@ -119,7 +120,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
+        <div className="max-w-md rounded-md border border-primary bg-primary-800">
           <div className="flex flex-row">
             <Link
               href="https://github.com/McAJBen/MinesweeperAI"
@@ -136,13 +137,13 @@ export default function Home() {
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/MinesweeperAI"
-              className="m-3 block text-center text-lg text-secondary hover:text-white"
+              className="m-3 block text-center text-lg text-link hover:underline"
             >
               Minesweeper AI
             </Link>
             <p className="mt-5">
               Minesweeper game built with{" "}
-              <span className="text-primary">Java</span> that can also play
+              <span className="text-highlight">Java</span> that can also play
               against itself.
             </p>
             <p className="mt-5">
@@ -152,7 +153,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="max-w-md rounded-md border border-[--color-primary] bg-[--color-background-light]">
+        <div className="max-w-md rounded-md border border-primary bg-primary-800">
           <div className="flex flex-row">
             <Link
               href="https://github.com/McAJBen/TriangleConverter/blob/master/Examples/hue.png"
@@ -180,7 +181,7 @@ export default function Home() {
           <div className="p-5 pt-1">
             <Link
               href="https://github.com/McAJBen/TriangleConverter"
-              className="m-3 block text-center text-lg text-secondary hover:text-white"
+              className="m-3 block text-center text-lg text-link hover:underline"
             >
               Triangle Converter
             </Link>
@@ -190,7 +191,7 @@ export default function Home() {
             </p>
             <p className="mt-5">
               This uses a simple brute force algorithm in{" "}
-              <span className="text-primary">Java</span> that runs on parallel
+              <span className="text-highlight">Java</span> that runs on parallel
               threads.
             </p>
           </div>

@@ -59,7 +59,7 @@ export default function HangmanStart() {
   return (
     <div className="m-auto flex max-w-3xl flex-col items-center p-5 text-white">
       <input
-        className="m-2 rounded p-2 text-[--color-primary-dark]"
+        className="m-2 rounded p-2 text-primary"
         type="text"
         onChange={onUserNameChange}
         value={userName}
@@ -72,7 +72,7 @@ export default function HangmanStart() {
       </p>
       <button
         onClick={loading ? undefined : onClick}
-        className="m-2 rounded bg-[--color-primary] p-2 text-white hover:bg-white hover:text-[--color-primary]"
+        className="m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
       >
         Start Game
       </button>
@@ -95,17 +95,11 @@ export default function HangmanStart() {
                 params.set("id", boardItem.game_id);
                 const href = `/hangman/game?${params.toString()}`;
                 return (
-                  <tr
-                    key={boardItem.game_id}
-                    className="odd:bg-[--color-background-light]"
-                  >
+                  <tr key={boardItem.game_id} className="odd:bg-primary-800">
                     <td className="text-center">{index + 1}.</td>
                     <td className="text-center">{boardItem.user_name}</td>
                     <td className="text-center">
-                      <Link
-                        href={href}
-                        className="text-[--color-primary-light]"
-                      >
+                      <Link href={href} className="text-link hover:underline">
                         {boardItem.answer}
                       </Link>
                     </td>
