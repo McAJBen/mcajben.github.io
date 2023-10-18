@@ -17,7 +17,7 @@ export default function Answer(props: Props) {
             className={classNames(
               "inline-flex aspect-square w-full content-center items-center justify-center rounded",
 
-              isCorrect ? "bg-success" : "bg-primary-100"
+              isCorrect ? "bg-success" : "bg-primary-100",
             )}
           >
             <div className="text-center">{isCorrect ? letter : " "}</div>

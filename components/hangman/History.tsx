@@ -19,7 +19,7 @@ export default function History(props: Props) {
     const params = new URLSearchParams();
     params.set("id", gameState.game_id);
     await navigator.clipboard.writeText(
-      `${window.location.origin}/hangman/game?${params.toString()}`
+      `${window.location.origin}/hangman/game?${params.toString()}`,
     );
     setIsLinkCopied(true);
   }, [gameState]);
@@ -33,7 +33,7 @@ export default function History(props: Props) {
             key={index}
             className={classNames(
               "flex aspect-square w-[3rem] select-none content-center items-center justify-center rounded",
-              is_correct ? "bg-success" : "bg-primary-100"
+              is_correct ? "bg-success" : "bg-primary-100",
             )}
           >
             {letter}

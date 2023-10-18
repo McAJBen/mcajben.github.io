@@ -24,7 +24,7 @@ export default function HangmanGame() {
         setGameState(response);
       }
     },
-    [gameId]
+    [gameId],
   );
 
   const getKeyInfo = useCallback(
@@ -37,7 +37,7 @@ export default function HangmanGame() {
         isCorrect: guess?.is_correct ?? false,
       };
     },
-    [gameState]
+    [gameState],
   );
 
   const isExpired = useIsExpired(gameState?.expiration_time);

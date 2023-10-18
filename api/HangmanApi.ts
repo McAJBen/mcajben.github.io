@@ -86,7 +86,7 @@ export default class HangmanApi {
   public static async createGuess(gameId: string, letter: string) {
     try {
       const response = await axios.post<GameState>(
-        `${this.URL}/game/${gameId}/guess/${letter}`
+        `${this.URL}/game/${gameId}/guess/${letter}`,
       );
       return response.data;
     } catch (error) {
@@ -97,7 +97,7 @@ export default class HangmanApi {
   public static async getLeaderboard() {
     try {
       const response = await axios.get<Leaderboard[]>(
-        `${this.URL}/leaderboard`
+        `${this.URL}/leaderboard`,
       );
       return response.data;
     } catch (error) {
