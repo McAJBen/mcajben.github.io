@@ -16,7 +16,7 @@ export default function HangmanStart() {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setUserName(event.target.value);
     },
-    []
+    [],
   );
 
   const onClick = useCallback(async () => {
@@ -39,7 +39,7 @@ export default function HangmanStart() {
         onClick();
       }
     },
-    [onClick]
+    [onClick],
   );
 
   useEffect(() => {

@@ -48,7 +48,7 @@ export default function Header() {
                   "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                   link.selected
                     ? "bg-white text-primary"
-                    : "text-white hover:bg-white hover:text-primary"
+                    : "text-white hover:bg-white hover:text-primary",
                 )}
                 href={link.to}
               >
@@ -95,7 +95,7 @@ export default function Header() {
                 "block h-12 cursor-pointer select-none px-2 text-center leading-[3rem]",
                 link.selected
                   ? "bg-white text-primary"
-                  : "text-white hover:bg-white hover:text-primary"
+                  : "text-white hover:bg-white hover:text-primary",
               )}
               href={link.to}
               onClick={onClick}

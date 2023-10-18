@@ -40,7 +40,7 @@ export default function Keyboard(props: Props) {
             ? "cursor-pointer bg-primary hover:bg-white hover:text-primary"
             : isCorrect
             ? "cursor-not-allowed bg-success"
-            : "cursor-not-allowed bg-transparent text-primary"
+            : "cursor-not-allowed bg-transparent text-primary",
         )}
         onClick={isEnabled ? () => onClick(key) : undefined}
       >

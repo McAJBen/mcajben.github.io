@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={classNames(
           inter.className,
-          "relative min-h-[100dvh] bg-[#200010]"
+          "relative min-h-[100dvh] bg-[#200010]",
         )}
       >
         <Header />
