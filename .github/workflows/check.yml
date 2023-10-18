@@ -1,4 +1,7 @@
-# workflow for building and checking a Next.js site
+# Sample workflow for building and deploying a Next.js site to GitHub Pages
+# https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
+#
+# To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
 name: Check Next.js site
 
@@ -52,6 +55,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Run Lint
+        run: ${{ steps.detect-package-manager.outputs.manager }} run lint
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       # - name: Static HTML export with Next.js
