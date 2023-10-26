@@ -2,97 +2,128 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
-import classNames from "classnames";
-
-const connectionStatusLabels = {
-  [ReadyState.CONNECTING]: "Connecting",
-  [ReadyState.OPEN]: "Open",
-  [ReadyState.CLOSING]: "Closing",
-  [ReadyState.CLOSED]: "Closed",
-  [ReadyState.UNINSTANTIATED]: "Uninstantiated",
-} as const;
+import {
+  ChatMessage,
+  ChatApiResponse,
+  MessageType,
+  RoomId,
+  RoomInfo,
+  RoomMetaData,
+} from "@/api/ChatApi";
+import Loading from "@/components/Loading";
+import NicknameInput from "@/components/chat/NicknameInput";
+import RoomNavigator from "@/components/chat/RoomNavigator";
+import ChatSession from "@/components/chat/ChatSession";
 
 const OPTIONS = { retryOnError: true } as const;
 
-const apiUrl = "wss://chat-api.mcajben.com/chat";
+const CHAT_API_URL = "wss://chat-api.mcajben.com/chat";
 
 export default function Chat() {
-  const [messageHistory, setMessageHistory] = useState<any[]>([]);
-  const [nickname, setNickname] = useState<string>();
-  const [nicknameText, setNicknameText] = useState("");
+  const [currentNickname, setCurrentNickname] = useState<string>();
 
-  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket<any>(
-    apiUrl,
-    OPTIONS,
-  );
+  const [availableRooms, setAvailableRooms] = useState<RoomMetaData[]>([]);
 
-  console.log(
-    "---last",
-    JSON.stringify(lastJsonMessage),
-    nickname,
-    nicknameText,
-    messageHistory,
-  );
+  const [currentRoom, setCurrentRoom] = useState<RoomInfo>();
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+
+  const { sendJsonMessage, lastJsonMessage, readyState } =
+    useWebSocket<ChatApiResponse | null>(CHAT_API_URL, OPTIONS);
 
   useEffect(() => {
-    if (lastJsonMessage !== null) {
-      if (lastJsonMessage.type === "get_nickname") {
-        setNickname(lastJsonMessage.nickname);
+    console.log("----->>>>>", lastJsonMessage);
+    switch (lastJsonMessage?.type) {
+      case "get_nickname":
+        setCurrentNickname(lastJsonMessage.nickname);
         sendJsonMessage({ type: "get_room_list", filter: "" });
-      }
-      setMessageHistory((prev) => prev.concat(lastJsonMessage));
+        break;
+      case "get_room_list":
+        setAvailableRooms(lastJsonMessage.rooms);
+        break;
+      case "room_info":
+        setCurrentRoom({
+          id: lastJsonMessage.id,
+          name: lastJsonMessage.name,
+          users: lastJsonMessage.users,
+        });
+        break;
+      case "receive_message":
+        setMessages((prev) =>
+          prev.concat([
+            {
+              type: MessageType.Message,
+              timestamp: lastJsonMessage.timestamp,
+              user_id: lastJsonMessage.session_id,
+              user_name:
+                currentRoom?.users.find(
+                  (user) => user.id === lastJsonMessage.session_id,
+                )?.name ?? "unknown",
+              message: lastJsonMessage.message,
+            },
+          ]),
+        );
+        break;
+      case "receive_die_roll":
+        setMessages((prev) =>
+          prev.concat([
+            {
+              type: MessageType.DieRoll,
+              timestamp: lastJsonMessage.timestamp,
+              user_id: lastJsonMessage.session_id,
+              user_name:
+                currentRoom?.users.find(
+                  (user) => user.id === lastJsonMessage.session_id,
+                )?.name ?? "unknown",
+              roll_function: lastJsonMessage.roll_function,
+              result: lastJsonMessage.result,
+            },
+          ]),
+        );
+        break;
     }
-  }, [setMessageHistory, sendJsonMessage, lastJsonMessage]);
+  }, [sendJsonMessage, lastJsonMessage, currentRoom]);
 
-  const onSendMessage = useCallback(
-    () => sendJsonMessage("Hello"),
+  const onSendNickname = useCallback(
+    (newNickname: string) =>
+      sendJsonMessage({ type: "set_nickname", nickname: newNickname }),
     [sendJsonMessage],
   );
 
-  const onSendNickname = useCallback(
-    () => sendJsonMessage({ type: "set_nickname", nickname: nicknameText }),
-    [sendJsonMessage, nicknameText],
+  const onSendJoinRoom = useCallback(
+    (id: RoomId) => sendJsonMessage({ type: "join_room", room_id: id }),
+    [sendJsonMessage],
   );
 
-  const connectionStatus = connectionStatusLabels[readyState];
-
-  return (
-    <div className="flex flex-1 flex-col items-center p-3 text-white">
-      <button
-        onClick={onSendMessage}
-        disabled={readyState !== ReadyState.OPEN}
-        className={classNames(
-          "m-0.5 flex flex-1 select-none items-center justify-center rounded text-center text-xl uppercase text-white",
-          true
-            ? "cursor-pointer bg-primary hover:bg-white hover:text-primary"
-            : "cursor-not-allowed bg-success",
-        )}
-      >
-        Click Me to send &apos;Hello&apos;
-      </button>
-      <span>The WebSocket is currently {connectionStatus}</span>
-      {nickname === undefined ? (
-        <>
-          <input type="text" className="text-black" />
-          <button onClick={onSendNickname}>Submit</button>
-        </>
-      ) : (
-        <>
-          <button
-            onClick={() =>
-              sendJsonMessage({ type: "create_room", name: "my_room" })
-            }
-          >
-            Create Room
-          </button>
-        </>
-      )}
-      <ul>
-        <span>Last message: {JSON.stringify(lastJsonMessage)}</span>
-        {messageHistory.map((message, idx) => (
-          <span key={idx}>{message ? message.data : null}</span>
-        ))}
-      </ul>
-    </div>
+  const onSendCreateRoom = useCallback(
+    (name: string) => sendJsonMessage({ type: "create_room", name }),
+    [sendJsonMessage],
   );
+
+  const onSendMessage = useCallback(
+    (message: string) => sendJsonMessage({ type: "send_message", message }),
+    [sendJsonMessage],
+  );
+
+  if (readyState != ReadyState.OPEN) {
+    return <Loading />;
+  } else if (currentNickname === undefined) {
+    return <NicknameInput onSubmit={onSendNickname} />;
+  } else if (currentRoom === undefined) {
+    return (
+      <RoomNavigator
+        rooms={availableRooms}
+        onCreateRoom={onSendCreateRoom}
+        onJoinRoom={onSendJoinRoom}
+      />
+    );
+  } else {
+    return (
+      <ChatSession
+        nickname={currentNickname}
+        room={currentRoom}
+        messages={messages}
+        onSubmitMessage={onSendMessage}
+      />
+    );
+  }
 }

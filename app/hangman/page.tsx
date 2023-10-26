@@ -59,6 +59,7 @@ export default function HangmanStart() {
   return (
     <div className="m-auto flex max-w-3xl flex-col items-center p-5 text-white">
       <input
+        autoFocus
         className="m-2 rounded p-2 text-primary"
         type="text"
         onChange={onUserNameChange}

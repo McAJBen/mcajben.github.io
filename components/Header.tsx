@@ -37,6 +37,14 @@ export default function Header() {
     },
   ];
 
+  if (pathname == "/chat") {
+    links.push({
+      name: "Chat",
+      to: "/chat",
+      selected: true,
+    });
+  }
+
   return (
     <header className="absolute w-full overflow-hidden">
       <div className="m-0 block h-12 flex-row overflow-hidden bg-primary p-0 text-lg">
