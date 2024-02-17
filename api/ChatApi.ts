@@ -2,21 +2,24 @@ export type UserId = string;
 
 export type RoomId = string;
 
-export type Timestamp = string;
+export type Timestamp = number;
+
+export type State =
+  | {
+      t: "unauthenticated";
+    }
+  | {
+      t: "authenticated";
+      // username: string;
+    }
+  | {
+      t: "in_room";
+    };
 
 export type RoomMetaData = {
   id: RoomId;
   name: string;
   user_count: number;
-};
-
-export type RoomInfo = {
-  id: RoomId;
-  name: string;
-  users: {
-    id: RoomId;
-    name: string;
-  }[];
 };
 
 export enum MessageType {
@@ -32,42 +35,42 @@ export type ChatMessage = (
   | {
       type: MessageType.DieRoll;
       roll_function: string;
+      rolls: string;
       result: number;
     }
 ) & {
   timestamp: Timestamp;
   user_id: UserId;
-  user_name: string;
 };
 
 export type ChatApiResponse =
   | {
-      type: "get_nickname";
-      nickname: string;
+      type:
+        | "create_user"
+        | "login_user"
+        | "create_room"
+        | "join_room"
+        | "send_die_roll";
+      success: boolean;
     }
   | {
-      type: "get_room_list";
+      type: "logout_user" | "send_message" | "leave_room";
+    }
+  | {
+      type: "get_rooms";
       rooms: RoomMetaData[];
-    }
-  | {
-      type: "room_info";
-      id: RoomId;
-      name: string;
-      users: {
-        id: RoomId;
-        name: string;
-      }[];
     }
   | {
       type: "receive_message";
       timestamp: Timestamp;
-      session_id: UserId;
+      user_id: UserId;
       message: string;
     }
   | {
       type: "receive_die_roll";
       timestamp: Timestamp;
-      session_id: UserId;
+      user_id: UserId;
       roll_function: string;
+      rolls: string;
       result: number;
     };

@@ -1,20 +1,25 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ChatMessage, MessageType, RoomInfo } from "@/api/ChatApi";
+import { ChatMessage, MessageType } from "@/api/ChatApi";
 
 type Props = {
   nickname: string;
-  room: RoomInfo;
+  room: string;
   messages: ChatMessage[];
-  onSubmitMessage(message: string): void;
+  onSendMessage(message: string): void;
+  onSendDieRoll(roll_function: string): void;
 };
 
 export default function ChatSession(props: Props) {
   const [newMessage, setNewMessage] = useState("");
 
   const onSubmitMessage = useCallback(() => {
-    props.onSubmitMessage(newMessage);
+    if (newMessage.startsWith("/roll ")) {
+      props.onSendDieRoll(newMessage.substring(6));
+    } else {
+      props.onSendMessage(newMessage);
+    }
     setNewMessage("");
   }, [props, newMessage]);
 
@@ -37,7 +42,7 @@ export default function ChatSession(props: Props) {
   return (
     <div className="flex flex-auto flex-col items-center overflow-hidden text-white">
       <span className="w-full bg-primary-600 text-center text-lg">
-        {props.room.name}
+        {props.room}
       </span>
       <div className="max-h-screen w-full">
         {props.messages.map((message) => (
@@ -46,15 +51,14 @@ export default function ChatSession(props: Props) {
             key={message.timestamp + ":" + message.user_id}
           >
             <span className="text-gray-500">{message.timestamp}</span>
-            <span className="pe-2 ps-2 text-secondary">
-              {message.user_name}
-            </span>
+            <span className="pe-2 ps-2 text-secondary">{message.user_id}</span>
             {message.type === MessageType.Message && (
               <span className="">{message.message}</span>
             )}
             {message.type === MessageType.DieRoll && (
               <span className="">
-                {message.roll_function} -&gt; {message.result}
+                {message.roll_function} -&gt; {message.rolls} -&gt;{" "}
+                {message.result}
               </span>
             )}
           </div>

@@ -7,11 +7,11 @@ import {
   ChatApiResponse,
   MessageType,
   RoomId,
-  RoomInfo,
   RoomMetaData,
+  State,
 } from "@/api/ChatApi";
 import Loading from "@/components/Loading";
-import NicknameInput from "@/components/chat/NicknameInput";
+import ChatLogin from "@/components/chat/ChatLogin";
 import RoomNavigator from "@/components/chat/RoomNavigator";
 import ChatSession from "@/components/chat/ChatSession";
 
@@ -20,11 +20,10 @@ const OPTIONS = { retryOnError: true } as const;
 const CHAT_API_URL = "wss://chat-api.mcajben.com/chat";
 
 export default function Chat() {
-  const [currentNickname, setCurrentNickname] = useState<string>();
+  const [state, setState] = useState<State>({ t: "unauthenticated" });
 
   const [availableRooms, setAvailableRooms] = useState<RoomMetaData[]>([]);
 
-  const [currentRoom, setCurrentRoom] = useState<RoomInfo>();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   const { sendJsonMessage, lastJsonMessage, readyState } =
@@ -33,19 +32,17 @@ export default function Chat() {
   useEffect(() => {
     console.log("----->>>>>", lastJsonMessage);
     switch (lastJsonMessage?.type) {
-      case "get_nickname":
-        setCurrentNickname(lastJsonMessage.nickname);
-        sendJsonMessage({ type: "get_room_list", filter: "" });
+      case "create_user":
+      case "login_user":
+        setState({ t: "authenticated" });
+        sendJsonMessage({ type: "get_rooms", filter: "" });
         break;
-      case "get_room_list":
+      case "get_rooms":
         setAvailableRooms(lastJsonMessage.rooms);
         break;
-      case "room_info":
-        setCurrentRoom({
-          id: lastJsonMessage.id,
-          name: lastJsonMessage.name,
-          users: lastJsonMessage.users,
-        });
+      case "create_room":
+      case "join_room":
+        setState({ t: "in_room" });
         break;
       case "receive_message":
         setMessages((prev) =>
@@ -53,11 +50,7 @@ export default function Chat() {
             {
               type: MessageType.Message,
               timestamp: lastJsonMessage.timestamp,
-              user_id: lastJsonMessage.session_id,
-              user_name:
-                currentRoom?.users.find(
-                  (user) => user.id === lastJsonMessage.session_id,
-                )?.name ?? "unknown",
+              user_id: lastJsonMessage.user_id,
               message: lastJsonMessage.message,
             },
           ]),
@@ -69,23 +62,26 @@ export default function Chat() {
             {
               type: MessageType.DieRoll,
               timestamp: lastJsonMessage.timestamp,
-              user_id: lastJsonMessage.session_id,
-              user_name:
-                currentRoom?.users.find(
-                  (user) => user.id === lastJsonMessage.session_id,
-                )?.name ?? "unknown",
+              user_id: lastJsonMessage.user_id,
               roll_function: lastJsonMessage.roll_function,
+              rolls: lastJsonMessage.rolls,
               result: lastJsonMessage.result,
             },
           ]),
         );
         break;
     }
-  }, [sendJsonMessage, lastJsonMessage, currentRoom]);
+  }, [sendJsonMessage, lastJsonMessage]);
 
-  const onSendNickname = useCallback(
-    (newNickname: string) =>
-      sendJsonMessage({ type: "set_nickname", nickname: newNickname }),
+  const onSendCreateUser = useCallback(
+    (username: string, password: string) =>
+      sendJsonMessage({ type: "create_user", username, password }),
+    [sendJsonMessage],
+  );
+
+  const onSendLoginUser = useCallback(
+    (username: string, password: string) =>
+      sendJsonMessage({ type: "login_user", username, password }),
     [sendJsonMessage],
   );
 
@@ -104,11 +100,17 @@ export default function Chat() {
     [sendJsonMessage],
   );
 
+  const onSendDieRoll = useCallback(
+    (roll_function: string) =>
+      sendJsonMessage({ type: "send_die_roll", roll_function }),
+    [sendJsonMessage],
+  );
+
   if (readyState != ReadyState.OPEN) {
     return <Loading />;
-  } else if (currentNickname === undefined) {
-    return <NicknameInput onSubmit={onSendNickname} />;
-  } else if (currentRoom === undefined) {
+  } else if (state.t === "unauthenticated") {
+    return <ChatLogin onCreate={onSendCreateUser} onLogin={onSendLoginUser} />;
+  } else if (state.t === "authenticated") {
     return (
       <RoomNavigator
         rooms={availableRooms}
@@ -119,10 +121,11 @@ export default function Chat() {
   } else {
     return (
       <ChatSession
-        nickname={currentNickname}
-        room={currentRoom}
+        nickname={"test"}
+        room={"room"}
         messages={messages}
-        onSubmitMessage={onSendMessage}
+        onSendMessage={onSendMessage}
+        onSendDieRoll={onSendDieRoll}
       />
     );
   }
