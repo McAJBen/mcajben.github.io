@@ -34,15 +34,19 @@ export default function Chat() {
     switch (lastJsonMessage?.type) {
       case "create_user":
       case "login_user":
-        setState({ t: "authenticated" });
-        sendJsonMessage({ type: "get_rooms", filter: "" });
+        if (lastJsonMessage.success) {
+          setState({ t: "authenticated" });
+          sendJsonMessage({ type: "get_rooms", filter: "" });
+        }
         break;
       case "get_rooms":
         setAvailableRooms(lastJsonMessage.rooms);
         break;
       case "create_room":
       case "join_room":
-        setState({ t: "in_room" });
+        if (lastJsonMessage.success) {
+          setState({ t: "in_room" });
+        }
         break;
       case "receive_message":
         setMessages((prev) =>
