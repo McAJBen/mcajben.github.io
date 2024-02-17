@@ -35,15 +35,12 @@ export default function Header() {
       to: "/resume",
       selected: pathname == "/resume",
     },
-  ];
-
-  if (pathname == "/chat") {
-    links.push({
+    {
       name: "Chat",
       to: "/chat",
-      selected: true,
-    });
-  }
+      selected: pathname == "/chat",
+    },
+  ];
 
   return (
     <header className="absolute w-full overflow-hidden">
