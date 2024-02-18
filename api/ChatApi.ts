@@ -22,6 +22,11 @@ export type RoomMetaData = {
   user_count: number;
 };
 
+export type UserMetaData = {
+  id: UserId;
+  username: string;
+};
+
 export enum MessageType {
   Message,
   DieRoll,
@@ -50,15 +55,26 @@ export type ChatApiResponse =
         | "login_user"
         | "create_room"
         | "join_room"
-        | "send_die_roll";
+        | "send_die_roll"
+        | "send_message";
       success: boolean;
     }
   | {
-      type: "logout_user" | "send_message" | "leave_room";
+      type: "logout_user" | "leave_room";
+    }
+  | {
+      type: "get_user";
+      user_id: string;
+      username: string;
     }
   | {
       type: "get_rooms";
       rooms: RoomMetaData[];
+    }
+  | {
+      type: "get_room";
+      name: string;
+      users: UserMetaData[];
     }
   | {
       type: "receive_message";

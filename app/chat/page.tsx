@@ -9,6 +9,8 @@ import {
   RoomId,
   RoomMetaData,
   State,
+  UserMetaData,
+  UserId,
 } from "@/api/ChatApi";
 import Loading from "@/components/Loading";
 import ChatLogin from "@/components/chat/ChatLogin";
@@ -23,6 +25,10 @@ export default function Chat() {
   const [state, setState] = useState<State>({ t: "unauthenticated" });
 
   const [availableRooms, setAvailableRooms] = useState<RoomMetaData[]>([]);
+
+  const [knownUsers, setKnownUsers] = useState<Record<UserId, UserMetaData>>(
+    {},
+  );
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
@@ -48,7 +54,24 @@ export default function Chat() {
           setState({ t: "in_room" });
         }
         break;
+      case "get_user":
+        setKnownUsers((prev) => ({
+          ...prev,
+          [lastJsonMessage.user_id]: {
+            id: lastJsonMessage.user_id,
+            username: lastJsonMessage.username,
+          },
+        }));
+        break;
+      case "get_room":
+        break;
       case "receive_message":
+        if (!Object.hasOwn(knownUsers, lastJsonMessage.user_id)) {
+          sendJsonMessage({
+            type: "get_user",
+            user_id: lastJsonMessage.user_id,
+          });
+        }
         setMessages((prev) =>
           prev.concat([
             {
@@ -61,6 +84,12 @@ export default function Chat() {
         );
         break;
       case "receive_die_roll":
+        if (!Object.hasOwn(knownUsers, lastJsonMessage.user_id)) {
+          sendJsonMessage({
+            type: "get_user",
+            user_id: lastJsonMessage.user_id,
+          });
+        }
         setMessages((prev) =>
           prev.concat([
             {
@@ -127,6 +156,7 @@ export default function Chat() {
       <ChatSession
         nickname={"test"}
         room={"room"}
+        knownUsers={knownUsers}
         messages={messages}
         onSendMessage={onSendMessage}
         onSendDieRoll={onSendDieRoll}

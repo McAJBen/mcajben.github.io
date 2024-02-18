@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ChatMessage, MessageType } from "@/api/ChatApi";
+import { ChatMessage, MessageType, UserId, UserMetaData } from "@/api/ChatApi";
 
 type Props = {
   nickname: string;
   room: string;
+  knownUsers: Record<UserId, UserMetaData>;
   messages: ChatMessage[];
   onSendMessage(message: string): void;
   onSendDieRoll(roll_function: string): void;
@@ -50,8 +51,12 @@ export default function ChatSession(props: Props) {
             className="flex flex-row p-0.5"
             key={message.timestamp + ":" + message.user_id}
           >
-            <span className="text-gray-500">{message.timestamp}</span>
-            <span className="pe-2 ps-2 text-secondary">{message.user_id}</span>
+            <span className="text-gray-500">
+              {new Date(message.timestamp).toString()}
+            </span>
+            <span className="pe-2 ps-2 text-secondary">
+              {props.knownUsers[message.user_id]?.username ?? message.user_id}
+            </span>
             {message.type === MessageType.Message && (
               <span className="">{message.message}</span>
             )}
