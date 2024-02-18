@@ -10,6 +10,7 @@ type Props = {
   messages: ChatMessage[];
   onSendMessage(message: string): void;
   onSendDieRoll(roll_function: string): void;
+  onExitRoom(): void;
 };
 
 export default function ChatSession(props: Props) {
@@ -44,6 +45,12 @@ export default function ChatSession(props: Props) {
     <div className="flex flex-auto flex-col items-center overflow-hidden text-white">
       <span className="w-full bg-primary-600 text-center text-lg">
         {props.room}
+        <button
+          onClick={props.onExitRoom}
+          className="float-right m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
+        >
+          Exit
+        </button>
       </span>
       <div className="max-h-screen w-full">
         {props.messages.map((message) => (

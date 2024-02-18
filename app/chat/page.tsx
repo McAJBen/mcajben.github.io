@@ -65,6 +65,9 @@ export default function Chat() {
         break;
       case "get_room":
         break;
+      case "leave_room":
+        setState({ t: "authenticated" });
+        break;
       case "receive_message":
         if (!Object.hasOwn(knownUsers, lastJsonMessage.user_id)) {
           sendJsonMessage({
@@ -139,6 +142,10 @@ export default function Chat() {
     [sendJsonMessage],
   );
 
+  const onExitRoom = useCallback(() => {
+    sendJsonMessage({ type: "leave_room" });
+  }, [sendJsonMessage]);
+
   if (readyState != ReadyState.OPEN) {
     return <Loading />;
   } else if (state.t === "unauthenticated") {
@@ -160,6 +167,7 @@ export default function Chat() {
         messages={messages}
         onSendMessage={onSendMessage}
         onSendDieRoll={onSendDieRoll}
+        onExitRoom={onExitRoom}
       />
     );
   }
