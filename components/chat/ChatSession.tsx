@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { ChatMessage, MessageType, UserId, UserMetaData } from "@/api/ChatApi";
+import ChatMessageComponent from "./ChatMessage";
 
 type Props = {
   nickname: string;
@@ -54,26 +55,11 @@ export default function ChatSession(props: Props) {
       </span>
       <div className="max-h-screen w-full">
         {props.messages.map((message) => (
-          <div
-            className="flex flex-row p-0.5"
-            key={message.timestamp + ":" + message.user_id}
-          >
-            <span className="text-gray-500">
-              {new Date(message.timestamp).toString()}
-            </span>
-            <span className="pe-2 ps-2 text-secondary">
-              {props.knownUsers[message.user_id]?.username ?? message.user_id}
-            </span>
-            {message.type === MessageType.Message && (
-              <span className="">{message.message}</span>
-            )}
-            {message.type === MessageType.DieRoll && (
-              <span className="">
-                {message.roll_function} -&gt; {message.rolls} -&gt;{" "}
-                {message.result}
-              </span>
-            )}
-          </div>
+          <ChatMessageComponent
+            key={message.timestamp}
+            userCache={props.knownUsers}
+            message={message}
+          />
         ))}
       </div>
       <div className="bottom-0 end-0 start-0 w-full flex-row bg-secondary">
