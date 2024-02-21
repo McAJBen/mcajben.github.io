@@ -63,7 +63,7 @@ export default function ChatLogin(props: Props) {
       <div>
         <button
           onClick={onCreate}
-          className="m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
+          className="m-2 rounded bg-secondary p-2 text-white hover:bg-white hover:text-secondary"
         >
           Create Account
         </button>
