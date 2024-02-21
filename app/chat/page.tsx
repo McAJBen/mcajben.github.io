@@ -52,6 +52,7 @@ export default function Chat() {
       case "join_room":
         if (lastJsonMessage.success) {
           setState({ t: "in_room" });
+          setMessages([]);
         }
         break;
       case "get_user":
@@ -67,6 +68,7 @@ export default function Chat() {
         break;
       case "leave_room":
         setState({ t: "authenticated" });
+        setMessages([]);
         break;
       case "receive_message":
         if (!Object.hasOwn(knownUsers, lastJsonMessage.user_id)) {
