@@ -36,19 +36,19 @@ export default function ChatMessage({ userCache, message }: Props) {
         </span>
       </div>
       {message.type === MessageType.Message && (
-        <div className="text-pretty ps-2">{message.message}</div>
+        <div className="whitespace-pre-line ps-2">{message.message}</div>
       )}
       {message.type === MessageType.DieRoll && (
         <div className="ps-2">
-          <div className="text-pretty">
+          <div className="text-pretty break-all">
             <span className="text-highlight">Request: </span>
             {message.roll_function}
           </div>
-          <div className="text-pretty">
+          <div className="text-pretty break-all">
             <span className="text-highlight">Rolls: </span>
             {message.rolls}
           </div>
-          <div className="text-pretty">
+          <div className="text-pretty break-all">
             <span className="text-highlight">Total: </span>
             {message.result}
           </div>

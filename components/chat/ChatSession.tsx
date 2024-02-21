@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ChatMessage, MessageType, UserId, UserMetaData } from "@/api/ChatApi";
+import { MdSend, MdCasino } from "react-icons/md";
+import { ChatMessage, UserId, UserMetaData } from "@/api/ChatApi";
 import ChatMessageComponent from "./ChatMessage";
 
 type Props = {
@@ -26,16 +27,22 @@ export default function ChatSession(props: Props) {
     setNewMessage("");
   }, [props, newMessage]);
 
+  const onSubmitRoll = useCallback(() => {
+    props.onSendDieRoll(newMessage);
+    setNewMessage("");
+  }, [props, newMessage]);
+
   const onMessageChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setNewMessage(event.target.value);
     },
     [],
   );
 
   const onMessageKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === "Enter") {
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
         onSubmitMessage();
       }
     },
@@ -62,12 +69,11 @@ export default function ChatSession(props: Props) {
           />
         ))}
       </div>
-      <div className="bottom-0 end-0 start-0 w-full flex-row bg-secondary">
-        <input
+      <div className="bottom-0 end-0 start-0 flex w-full flex-row bg-secondary">
+        <textarea
           autoFocus
-          className="m-2 rounded p-2 text-primary"
-          type="text"
-          onChange={onMessageChange}
+          className="m-2 line-clamp-2 flex flex-1 resize-none rounded p-2 text-primary"
+          onChangeCapture={onMessageChange}
           value={newMessage}
           placeholder="Enter Message..."
           onKeyDown={onMessageKeyDown}
@@ -76,7 +82,13 @@ export default function ChatSession(props: Props) {
           onClick={onSubmitMessage}
           className="m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
         >
-          Submit
+          <MdSend />
+        </button>
+        <button
+          onClick={onSubmitRoll}
+          className="m-2 rounded bg-primary p-2 text-white hover:bg-white hover:text-primary"
+        >
+          <MdCasino />
         </button>
       </div>
     </div>
