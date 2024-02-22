@@ -45,6 +45,9 @@ export default function Chat() {
           sendJsonMessage({ type: "get_rooms", filter: "" });
         }
         break;
+      case "logout_user":
+        setState({ t: "unauthenticated" });
+        break;
       case "get_rooms":
         setAvailableRooms(lastJsonMessage.rooms);
         break;
@@ -69,6 +72,7 @@ export default function Chat() {
       case "leave_room":
         setState({ t: "authenticated" });
         setMessages([]);
+        sendJsonMessage({ type: "get_rooms", filter: "" });
         break;
       case "receive_message":
         if (!Object.hasOwn(knownUsers, lastJsonMessage.user_id)) {
@@ -123,6 +127,10 @@ export default function Chat() {
     [sendJsonMessage],
   );
 
+  const onLogoutUser = useCallback(() => {
+    sendJsonMessage({ type: "logout_user" });
+  }, [sendJsonMessage]);
+
   const onSendJoinRoom = useCallback(
     (id: RoomId) => sendJsonMessage({ type: "join_room", room_id: id }),
     [sendJsonMessage],
@@ -158,6 +166,7 @@ export default function Chat() {
         rooms={availableRooms}
         onCreateRoom={onSendCreateRoom}
         onJoinRoom={onSendJoinRoom}
+        onLogout={onLogoutUser}
       />
     );
   } else {
