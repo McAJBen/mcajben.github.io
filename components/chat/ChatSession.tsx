@@ -60,7 +60,7 @@ export default function ChatSession(props: Props) {
           Exit
         </button>
       </span>
-      <div className="max-h-screen w-full">
+      <div className="max-h-screen w-full overflow-auto">
         {props.messages.map((message) => (
           <ChatMessageComponent
             key={message.timestamp}
@@ -73,7 +73,7 @@ export default function ChatSession(props: Props) {
         <textarea
           autoFocus
           className="m-2 line-clamp-2 flex flex-1 resize-none rounded p-2 text-primary"
-          onChangeCapture={onMessageChange}
+          onChange={onMessageChange}
           value={newMessage}
           placeholder="Enter Message..."
           onKeyDown={onMessageKeyDown}

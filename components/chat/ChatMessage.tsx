@@ -11,7 +11,6 @@ type Props = {
 function getReadableTimestamp(date: Date) {
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
-  console.log(startOfToday);
 
   if (date <= startOfToday) {
     return date.toLocaleString();
