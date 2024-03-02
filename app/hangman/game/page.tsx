@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import HangmanApi, { GameState } from "@/api/HangmanApi";
 import Loading from "@/components/Loading";
@@ -10,7 +10,7 @@ import History from "@/components/hangman/History";
 import Timer from "@/components/hangman/Timer";
 import { useIsExpired } from "@/components/Hooks";
 
-export default function HangmanGame() {
+function Game() {
   const searchParams = useSearchParams();
   const gameId = searchParams.get("id");
   const router = useRouter();
@@ -73,5 +73,13 @@ export default function HangmanGame() {
         <Keyboard onClick={onLetterClick} getKeyInfo={getKeyInfo} />
       )}
     </div>
+  );
+}
+
+export default function HangmanGame() {
+  return (
+    <Suspense>
+      <Game />
+    </Suspense>
   );
 }
