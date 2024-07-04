@@ -113,7 +113,7 @@ export default function Chat() {
         );
         break;
     }
-  }, [sendJsonMessage, lastJsonMessage]);
+  }, [sendJsonMessage, knownUsers, lastJsonMessage]);
 
   const onSendCreateUser = useCallback(
     (username: string, password: string) =>
